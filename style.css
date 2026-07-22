@@ -1,0 +1,97 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Helvetica', Arial, sans-serif;
+  color: white;
+  background-color: black;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: yellow;
+}
+
+.down-arrow {
+    position: absolute;
+    bottom: 40px;
+
+    font-size: 2.5rem;
+
+    text-decoration: none;
+    color: white;
+
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%,20%,50%,80%,100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.navlinks {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    list-style: none;
+    padding: 2px;
+    margin: 0;
+
+    background-color: gray;
+    border-radius: 16px;
+}
+
+.navlinks li {
+    display: flex;
+}
+
+.navlinks a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+
+    padding: 10px 18px;
+    border-radius: 12px;
+
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
