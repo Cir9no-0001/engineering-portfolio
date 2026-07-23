@@ -2,10 +2,23 @@ html {
     scroll-behavior: smooth;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 body {
-  font-family: 'Helvetica', Arial, sans-serif;
-  color: white;
-  background-color: black;
+    margin: 0;
+    font-family: 'Helvetica', Arial, sans-serif;
+    color: white;
+    background-color: black;
+}
+
+main {
+    width: 80%;
+    max-width: 1200px;
+
+    margin: auto;
 }
 
 .hero {
@@ -58,7 +71,7 @@ body {
 .navbar {
     display: flex;
     justify-content: center;
-    margin: 20px auto;
+    margin: 10px auto;
 }
 
 .navlinks {
@@ -89,9 +102,121 @@ body {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-#home{
+.navlinks a:hover {
+    background:white;
+    color:black;
+}
+
+#intro {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:20px;
+    margin-bottom:0;
+}
+
+.intro-left {
+    flex: 1;
+    font-size: 2rem;
+    text-align: left;
+}
+
+.intro-right {
+    flex: 1;
+    text-align: right;
+}
+
+#intro h1,
+#intro h2,
+#intro h3 {
+    margin: 5px;
+}
+
+#brief {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    gap: 20px;
+    position: relative;
+    padding: 25px 0;
+    margin: 10px 0 20px;
+}
+
+
+#brief::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+}
+
+
+#brief::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+}
+
+
+#brief p {
+    background: gray;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#about {
+    background:gray;
+    padding:40px;
+    border-radius:20px;
+    font-size:1.2rem;
+    line-height:1.6;
+    margin-bottom:20px;
+
+}
+
+#star-projects {
+    background-color: #161b22;
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.star-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.star-title-left {
+    text-align: left;
+}
+
+.star-title-right {
+    text-align: right;
+}
+
+.project-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.project-card {
+    background-color: #21262d;
+    border-radius: 15px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding: 20px;
 }
