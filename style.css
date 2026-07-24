@@ -113,17 +113,22 @@ main {
     align-items:center;
     margin-top:20px;
     margin-bottom:0;
+    width: 100%;
 }
 
 .intro-left {
-    flex: 1;
-    font-size: 2rem;
+    width: 50%;
+    font-size: 1.5rem;
     text-align: left;
 }
 
 .intro-right {
-    flex: 1;
+    width: 50%;
     text-align: right;
+}
+
+#location{
+    font-size: 1.2rem;
 }
 
 #intro h1,
@@ -185,9 +190,9 @@ main {
 #star-projects {
     background-color: #161b22;
     border-radius: 20px;
-    padding: 40px;
+    padding: 30px;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 20px;
 }
 
 .star-title {
@@ -219,4 +224,36 @@ main {
     justify-content: center;
     align-items: end;
     padding: 20px;
+}
+
+#skills {
+    background-color: #161b22;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#skills h2, h3{
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.skills-container{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 50px;
+}
+
+.skills-card {
+    background-color: #21262d;
+    border-radius: 15px;
+    height: 150px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    text-align:center;
+    align-items: end;
+    padding: 10px;
 }
