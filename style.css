@@ -229,31 +229,76 @@ main {
 #skills {
     background-color: #161b22;
     border-radius: 20px;
-    padding: 20px;
+    padding: 40px;
     margin-top: 0;
     margin-bottom: 0;
 }
 
-#skills h2, h3{
+#skills h2,
+#skills h3{
     text-align: center;
-    margin-top: 25px;
-    margin-bottom: 10px;
 }
 
-.skills-container{
+#skills h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+#skills h3 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.skills-container {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 50px;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 20px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #444;
+
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
 }
 
-.skills-card {
+.skill-card {
     background-color: #21262d;
+    border: none;
     border-radius: 15px;
-    height: 150px;
-    width: 100px;
+    height: 180px;
+    width: 120px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    text-align:center;
-    align-items: end;
-    padding: 10px;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    transition: 0.2s ease;
+}
+
+.skill-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.skill-time {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    background-color: #30363d;
+}
+
+.skills-container:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.skill-card {
+    font-family: inherit;
+    font-size: inherit;
 }
