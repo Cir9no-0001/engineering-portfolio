@@ -28,10 +28,13 @@
             </ul>
         </nav>
 
+        <button id="music-toggle" class="music-btn" aria-label="Play menu music">▶</button>
+        <audio id="menu-music" src="audio/menu_music.mp3" loop></audio>
+
         <main>
             <section id="intro">
                 <div class="intro-left">
-                    <h1>Hi, I'm <br> Stanley Chen</h1>
+                    <h2>Hi, I'm <br> Stanley Chen</h2>
                 </div>
                 <div class="intro-right">
                     <h2>Systems Design Engineering<br>@ University of Waterloo</h2>
@@ -71,20 +74,22 @@
                 </div>
 
                 <div class="project-container">
-                    <article class="project-card">
+                    <article class="project-card" data-project="active-directory-home-lab">
+                        <img src="images/ad-lab.jpg" alt="Active Directory Home Lab">
                         <h3><a href="projects.html#active-directory-home-lab">Active Directory Home Lab</a></h3>
                     </article>
 
-                    <article class="project-card">
+                    <article class="project-card" data-project="leetcode-sync">
+                        <img src="images/leetcode-sync.jpg" alt="Leetcode Sync">
                         <h3><a href="projects.html#leetcode-sync">Leetcode Sync</a></h3>
                     </article>
 
-                    <article class="project-card">
+                    <article class="project-card" data-project="arduino-memory-game">
+                        <img src="images/arduino-memory-game.jpg" alt="Arduino Memory Game">
                         <h3><a href="projects.html#arduino-memory-game">Arduino Memory Game</a></h3>
                     </article>
                 </div>
             </section>
-            
             
             <section id="skills">
                 <h2>Technical Skills</h2>
@@ -180,6 +185,10 @@
             © 2026 Stanley Chen. All rights reserved.
         </p>
     </footer>
+
+    <div id="skill-modal" class="modal hidden">
+        <div class="modal-content"></div>
+    </div>
 
 </body>
 </html>
