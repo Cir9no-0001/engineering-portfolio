@@ -20,38 +20,155 @@
         </ul>
     </nav>
 
+    <button id="music-toggle" class="music-btn" aria-label="Play menu music">▶</button>
+    <audio id="menu-music" src="audio/music.mp3" loop></audio>
+
     <main>
         <section id="projects">
+
+            <div class="projects-header">
+                <h2>All Projects</h2>
+                <p>
+                    Explore my engineering, software, and technical projects.
+                </p>
+            </div>
+
             <div class="controls-bar">
                 <button type="button" id="filter-toggle" class="filter-btn">⚙ Advanced Filter</button>
                 <input type="text" id="project-search" class="search-input" placeholder="Search projects...">
             </div>
 
-            <div id="filter-panel" class="filter-panel hidden">
-            </div>
+            <form id="filter-panel" class="filter-panel hidden">
 
-            <h2>All Projects</h2>
-            <p>
-                Explore my engineering, software, and technical projects.
-            </p>
-            <article>
-                <h3>Active Directory Home Lab</h3>
-                <p>
-                    Built a Windows Server domain environment with Kali Linux testing.
-                </p>
+                <fieldset class="filter-group">
+                    <legend>Languages</legend>
+                    <label><input type="checkbox" name="skill" value="python"> Python</label>
+                    <label><input type="checkbox" name="skill" value="java"> Java</label>
+                    <label><input type="checkbox" name="skill" value="cpp"> C++</label>
+                    <label><input type="checkbox" name="skill" value="css"> CSS</label>
+                    <label><input type="checkbox" name="skill" value="html"> HTML</label>
+                    <label><input type="checkbox" name="skill" value="mysql"> MySQL</label>
+                </fieldset>
+
+                <fieldset class="filter-group">
+                    <legend>Frameworks & Tools</legend>
+                    <label><input type="checkbox" name="skill" value="git"> Git</label>
+                    <label><input type="checkbox" name="skill" value="github"> GitHub</label>
+                    <label><input type="checkbox" name="skill" value="vscode"> VS Code</label>
+                </fieldset>
+
+                <fieldset class="filter-group">
+                    <legend>Systems & Infrastructure</legend>
+                    <label><input type="checkbox" name="skill" value="windows"> Windows</label>
+                    <label><input type="checkbox" name="skill" value="linux"> Linux</label>
+                    <label><input type="checkbox" name="skill" value="virtualbox"> VirtualBox</label>
+                </fieldset>
+
+                <fieldset class="filter-group">
+                    <legend>Hardware & Design</legend>
+                    <label><input type="checkbox" name="skill" value="arduino"> Arduino</label>
+                    <label><input type="checkbox" name="skill" value="cad"> CAD</label>
+                </fieldset>
+
+                <fieldset class="filter-group">
+                    <legend>Minimum Difficulty</legend>
+                    <label><input type="radio" name="difficulty" value="1"> ★☆☆☆☆+</label>
+                    <label><input type="radio" name="difficulty" value="2"> ★★☆☆☆+</label>
+                    <label><input type="radio" name="difficulty" value="3"> ★★★☆☆+</label>
+                    <label><input type="radio" name="difficulty" value="4"> ★★★★☆+</label>
+                    <label><input type="radio" name="difficulty" value="5"> ★★★★★</label>
+                </fieldset>
+
+                <fieldset class="filter-group">
+                    <legend>Sort by Date</legend>
+                    <label><input type="radio" name="recency" value="newest"> Newest First</label>
+                    <label><input type="radio" name="recency" value="oldest"> Oldest First</label>
+                </fieldset>
+
+                <button type="submit" id="apply-filters">Apply Filters</button>
+
+            </form>
+
+            <article class="project" id="active-directory-home-lab" data-date="2026-01-15" data-difficulty="3">
+                <div class="project-gallery">
+                    <img class="gallery-item active" src="images/ad-lab-1.jpg" alt="Active Directory Home Lab screenshot 1">
+                    <img class="gallery-item" src="images/ad-lab-2.jpg" alt="Active Directory Home Lab screenshot 2">
+                </div>
+
+                <div class="project-info">
+                    <div class="project-header">
+                        <h3>Active Directory Home Lab</h3>
+                        <p class="project-date">January 2026</p>
+                    </div>
+
+                    <p class="project-description">
+                        Built a Windows Server domain environment with Kali Linux testing.
+                    </p>
+
+                    <div class="project-footer">
+                        <ul class="project-tags">
+                            <li>Windows</li>
+                            <li>Linux</li>
+                            <li>VirtualBox</li>
+                        </ul>
+                        <button type="button" class="see-more-btn" data-project="active-directory-home-lab">See More</button>
+                    </div>
+                </div>
+
             </article>
-            <article>
-                <h3>Arduino Memory Game</h3>
-                <p>
-                    Designed an embedded memory game using Arduino.
-                </p>
+
+            <article class="project" id="arduino-memory-game" data-date="2025-11-02" data-difficulty="2">
+                <div class="project-gallery">
+                    <img class="gallery-item active" src="images/arduino-game-1.jpg" alt="Arduino Memory Game screenshot 1">
+                    <img class="gallery-item" src="images/arduino-game-2.jpg" alt="Arduino Memory Game screenshot 2">
+                </div>
+
+                <div class="project-info">
+                    <div class="project-header">
+                        <h3>Arduino Memory Game</h3>
+                        <p class="project-date">November 2025</p>
+                    </div>
+
+                    <p class="project-description">
+                        Designed an embedded memory game using Arduino.
+                    </p>
+
+                    <div class="project-footer">
+                        <ul class="project-tags">
+                            <li>Arduino</li>
+                            <li>C++</li>
+                        </ul>
+                        <button type="button" class="see-more-btn" data-project="arduino-memory-game">See More</button>
+                    </div>
+                </div>
             </article>
-            <article>
-                <h3>Leetcode Sync</h3>
-                <p>
-                    Built a synchronization tool for Leetcode practice sessions.
-                </p>
+
+            <article class="project" id="leetcode-sync" data-date="2026-03-10" data-difficulty="2">
+                <div class="project-gallery">
+                    <img class="gallery-item active" src="images/leetcode-sync-1.jpg" alt="Leetcode Sync screenshot 1">
+                    <img class="gallery-item" src="images/leetcode-sync-2.jpg" alt="Leetcode Sync screenshot 2">
+                </div>
+
+                <div class="project-info">
+                    <div class="project-header">
+                        <h3>Leetcode Sync</h3>
+                        <p class="project-date">March 2026</p>
+                    </div>
+
+                    <p class="project-description">
+                        Built a synchronization tool for Leetcode practice sessions.
+                    </p>
+
+                    <div class="project-footer">
+                        <ul class="project-tags">
+                            <li>Python</li>
+                        </ul>
+                        <button type="button" class="see-more-btn" data-project="leetcode-sync">See More</button>
+                    </div>
+                </div>
+
             </article>
+
         </section>
     </main>
 
@@ -60,6 +177,10 @@
             © 2026 Stanley Chen. All rights reserved.
         </p>
     </footer>
+
+    <div id="project-modal" class="modal hidden">
+        <div class="modal-content"></div>
+    </div>
 
 </body>
 </html>
