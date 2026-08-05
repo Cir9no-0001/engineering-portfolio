@@ -706,3 +706,18 @@ main {
     opacity: 1;
     transform: translate(-50%, -25px);
 }
+
+.modal-link {
+    display: inline-block;
+    margin-top: 15px;
+    background: yellow;
+    color: black;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.hidden,
+.search-hidden {
+    display: none;
+}
