@@ -1,5 +1,8 @@
 /* Hero landing page code below */
 
+document.body.classList.add("hero-active");
+history.scrollRestoration = "manual";
+
 // Select hero page, main content, and down arrow elements
 const hero = document.getElementById("hero");
 const content = document.getElementById("content");
@@ -16,7 +19,9 @@ const cameFromAnotherPage =
 
 // Remove hero page when navigating back from another page
 if (cameFromAnotherPage) {
-    hero.remove();
+    hero.style.display = "none";
+    document.body.classList.remove("hero-active");
+
     window.scrollTo({
         top: 0,
         behavior: "instant"
@@ -27,13 +32,15 @@ if (cameFromAnotherPage) {
 arrow.addEventListener("click", function(event) {
     event.preventDefault();
 
+    document.body.classList.remove("hero-active");
+
     content.scrollIntoView({
         behavior: "smooth"
     });
 
     setTimeout(() => {
         hero.style.display = "none";
-    }, 600);
+    }, 650);
 });
 
 

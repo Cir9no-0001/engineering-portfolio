@@ -23,7 +23,26 @@ main {
 
 /* Index.html CSS Below */
 
+body.hero-active {
+    overflow: hidden;
+}
+
 .hero {
+    min-height: 100vh;
+
+    background-image:
+        linear-gradient(
+            to bottom,
+            transparent 60%,
+            rgba(11, 11, 11, 0.6) 85%,
+            #0b0b0b 100%
+        ),
+        url("images/hero.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     height: 100vh;
     display: flex;
     flex-direction: column;
