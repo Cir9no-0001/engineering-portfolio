@@ -1,3 +1,36 @@
+history.scrollRestoration = "manual";
+
+const hero = document.getElementById("hero");
+const content = document.getElementById("content");
+const arrow = document.querySelector(".down-arrow");
+
+const navigation = performance.getEntriesByType("navigation")[0];
+
+const cameFromAnotherPage =
+    document.referrer &&
+    new URL(document.referrer).origin === window.location.origin &&
+    !navigation.type.includes("reload");
+
+if (cameFromAnotherPage) {
+    hero.remove();
+    window.scrollTo({
+        top: 0,
+        behavior: "instant"
+    });
+}
+
+arrow.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    content.scrollIntoView({
+        behavior: "smooth"
+    });
+
+    setTimeout(() => {
+        hero.style.display = "none";
+    }, 1000);
+});
+
 const skillInfo = {
     python: "Used for scripting, automation, and backend development across various projects.",
     java: "Applied in object-oriented programming coursework and application development.",
