@@ -1,10 +1,100 @@
+/* Advanced filter code below */
+
+// Select filter button and hidden filter panel
 const filterToggle = document.querySelector('#filter-toggle');
 const filterPanel = document.querySelector('#filter-panel');
 
+// Toggle visibility of filter panel on click
 filterToggle.addEventListener('click', function () {
     filterPanel.classList.toggle('hidden');
 });
 
+// Select filter form and project elements
+const filterForm = document.querySelector('#filter-panel');
+const projects = document.querySelectorAll('.project');
+
+// Filter form logic for skills, difficulty, and recency
+filterForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const checkedSkills = document.querySelectorAll('input[name="skill"]:checked');
+    const selectedSkills = [];
+    checkedSkills.forEach(function (checkbox) {
+        selectedSkills.push(checkbox.value);
+    });
+
+    const difficultyRadio = document.querySelector('input[name="difficulty"]:checked');
+    const minDifficulty = difficultyRadio ? Number(difficultyRadio.value) : 0;
+
+    projects.forEach(function (project) {
+        const projectTags = project.querySelectorAll('.project-tags li');
+        const projectSkills = [];
+        projectTags.forEach(function (tag) {
+            projectSkills.push(tag.textContent.toLowerCase());
+        });
+
+        const matchesSkills = selectedSkills.length === 0 || selectedSkills.some(function (skill) {
+            return projectSkills.includes(skill);
+        });
+
+        const matchesDifficulty = Number(project.dataset.difficulty) >= minDifficulty;
+
+        if (matchesSkills && matchesDifficulty) {
+            project.classList.remove('hidden');
+        } else {
+            project.classList.add('hidden');
+        }
+    });
+
+    const recencyRadio = document.querySelector('input[name="recency"]:checked');
+    if (recencyRadio) {
+        const sortedProjects = Array.from(projects).sort(function (a, b) {
+            const dateA = new Date(a.dataset.date);
+            const dateB = new Date(b.dataset.date);
+            return recencyRadio.value === 'newest' ? dateB - dateA : dateA - dateB;
+        });
+
+        sortedProjects.forEach(function (project) {
+            project.parentElement.appendChild(project);
+        });
+    }
+});
+
+
+// URL skill filtering for skill table
+const urlParams = new URLSearchParams(window.location.search);
+const skillFromUrl = urlParams.get('skill');
+
+if (skillFromUrl) {
+    const matchingCheckbox = document.querySelector('input[name="skill"][value="' + skillFromUrl + '"]');
+    if (matchingCheckbox) {
+        matchingCheckbox.checked = true;
+        filterPanel.classList.remove('hidden');
+        filterForm.dispatchEvent(new Event('submit'));
+    }
+}
+
+// Search bar code
+const searchInput = document.querySelector('#project-search');
+
+searchInput.addEventListener('input', function () {
+    const searchText = searchInput.value.toLowerCase();
+
+    projects.forEach(function (project) {
+        const title = project.querySelector('h3').textContent.toLowerCase();
+
+        if (title.includes(searchText)) {
+            project.classList.remove('search-hidden');
+        } else {
+            project.classList.add('search-hidden');
+        }
+    });
+});
+
+
+/* Full project info code below */
+
+// Full project data
 const projectInfo = {
     "active-directory-home-lab": {
         images: ["images/ad-lab-1.jpg", "images/ad-lab-2.jpg"],
@@ -53,12 +143,15 @@ This project helped me practice working with APIs and databases in Python.`,
     }
 };
 
+// Select project modal and content elements
 const projectModal = document.querySelector('#project-modal');
 const projectModalContent = projectModal.querySelector('.modal-content');
 const seeMoreButtons = document.querySelectorAll('.see-more-btn');
+
 let currentDetailIndex = 0;
 let currentDetailImages = [];
 
+// See more button and project modal code
 seeMoreButtons.forEach(function (button) {
     button.addEventListener('click', function () {
         const projectId = button.dataset.project;
@@ -127,6 +220,7 @@ seeMoreButtons.forEach(function (button) {
     });
 });
 
+// Changes currently displayed project modal image
 function showDetailImage(newIndex) {
     const images = projectModalContent.querySelectorAll('.detail-gallery img');
     images[currentDetailIndex].classList.remove('active');
@@ -134,89 +228,14 @@ function showDetailImage(newIndex) {
     images[currentDetailIndex].classList.add('active');
 }
 
+// Close modal when user clicks outside the content area
 projectModal.addEventListener('click', function (event) {
     if (event.target === projectModal) {
         projectModal.classList.add('hidden');
     }
 });
 
-const filterForm = document.querySelector('#filter-panel');
-const projects = document.querySelectorAll('.project');
-
-filterForm.addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    const checkedSkills = document.querySelectorAll('input[name="skill"]:checked');
-    const selectedSkills = [];
-    checkedSkills.forEach(function (checkbox) {
-        selectedSkills.push(checkbox.value);
-    });
-
-    const difficultyRadio = document.querySelector('input[name="difficulty"]:checked');
-    const minDifficulty = difficultyRadio ? Number(difficultyRadio.value) : 0;
-
-    projects.forEach(function (project) {
-        const projectTags = project.querySelectorAll('.project-tags li');
-        const projectSkills = [];
-        projectTags.forEach(function (tag) {
-            projectSkills.push(tag.textContent.toLowerCase());
-        });
-
-        const matchesSkills = selectedSkills.length === 0 || selectedSkills.some(function (skill) {
-            return projectSkills.includes(skill);
-        });
-
-        const matchesDifficulty = Number(project.dataset.difficulty) >= minDifficulty;
-
-        if (matchesSkills && matchesDifficulty) {
-            project.classList.remove('hidden');
-        } else {
-            project.classList.add('hidden');
-        }
-    });
-
-    const recencyRadio = document.querySelector('input[name="recency"]:checked');
-    if (recencyRadio) {
-        const sortedProjects = Array.from(projects).sort(function (a, b) {
-            const dateA = new Date(a.dataset.date);
-            const dateB = new Date(b.dataset.date);
-            return recencyRadio.value === 'newest' ? dateB - dateA : dateA - dateB;
-        });
-
-        sortedProjects.forEach(function (project) {
-            project.parentElement.appendChild(project);
-        });
-    }
-});
-
-const urlParams = new URLSearchParams(window.location.search);
-const skillFromUrl = urlParams.get('skill');
-
-if (skillFromUrl) {
-    const matchingCheckbox = document.querySelector('input[name="skill"][value="' + skillFromUrl + '"]');
-    if (matchingCheckbox) {
-        matchingCheckbox.checked = true;
-        filterPanel.classList.remove('hidden');
-        filterForm.dispatchEvent(new Event('submit'));
-    }
-}
-
-const searchInput = document.querySelector('#project-search');
-
-searchInput.addEventListener('input', function () {
-    const searchText = searchInput.value.toLowerCase();
-
-    projects.forEach(function (project) {
-        const title = project.querySelector('h3').textContent.toLowerCase();
-
-        if (title.includes(searchText)) {
-            project.classList.remove('search-hidden');
-        } else {
-            project.classList.add('search-hidden');
-        }
-    });
-});
-
+// Gallery auto-rotation code
 const galleries = document.querySelectorAll('.project-gallery');
 
 galleries.forEach(function (gallery) {
