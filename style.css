@@ -937,7 +937,6 @@ body.hero-active {
 /* 404.html CSS Below */
 
 .not-found {
-    align-items: center;
     text-align: center;
     padding: 80px 20px;
     max-width: 600px;
