@@ -40,56 +40,67 @@
 
             <form id="filter-panel" class="filter-panel hidden">
 
-                <fieldset class="filter-group">
-                    <legend>Languages</legend>
-                    <label><input type="checkbox" name="skill" value="python"> Python</label>
-                    <label><input type="checkbox" name="skill" value="java"> Java</label>
-                    <label><input type="checkbox" name="skill" value="cpp"> C++</label>
-                    <label><input type="checkbox" name="skill" value="css"> CSS</label>
-                    <label><input type="checkbox" name="skill" value="html"> HTML</label>
-                    <label><input type="checkbox" name="skill" value="mysql"> MySQL</label>
-                </fieldset>
+                <div class="filter-column"> 
+                    <fieldset class="filter-group">
+                        <legend>Languages</legend>
+                        <label><input type="checkbox" name="skill" value="python"> Python</label>
+                        <label><input type="checkbox" name="skill" value="java"> Java</label>
+                        <label><input type="checkbox" name="skill" value="cpp"> C++</label>
+                        <label><input type="checkbox" name="skill" value="css"> CSS</label>
+                        <label><input type="checkbox" name="skill" value="html"> HTML</label>
+                        <label><input type="checkbox" name="skill" value="mysql"> MySQL</label>
+                    </fieldset>
 
-                <fieldset class="filter-group">
-                    <legend>Frameworks & Tools</legend>
-                    <label><input type="checkbox" name="skill" value="git"> Git</label>
-                    <label><input type="checkbox" name="skill" value="github"> GitHub</label>
-                    <label><input type="checkbox" name="skill" value="vscode"> VS Code</label>
-                </fieldset>
+                    <fieldset class="filter-group">
+                        <legend>Frameworks & Tools</legend>
+                        <label><input type="checkbox" name="skill" value="git"> Git</label>
+                        <label><input type="checkbox" name="skill" value="github"> GitHub</label>
+                        <label><input type="checkbox" name="skill" value="vscode"> VS Code</label>
+                    </fieldset>
 
-                <fieldset class="filter-group">
-                    <legend>Systems & Infrastructure</legend>
-                    <label><input type="checkbox" name="skill" value="windows"> Windows</label>
-                    <label><input type="checkbox" name="skill" value="linux"> Linux</label>
-                    <label><input type="checkbox" name="skill" value="virtualbox"> VirtualBox</label>
-                </fieldset>
+                    <fieldset class="filter-group">
+                        <legend>Systems & Infrastructure</legend>
+                        <label><input type="checkbox" name="skill" value="windows"> Windows</label>
+                        <label><input type="checkbox" name="skill" value="linux"> Linux</label>
+                        <label><input type="checkbox" name="skill" value="virtualbox"> VirtualBox</label>
+                    </fieldset>
 
-                <fieldset class="filter-group">
-                    <legend>Hardware & Design</legend>
-                    <label><input type="checkbox" name="skill" value="arduino"> Arduino</label>
-                    <label><input type="checkbox" name="skill" value="cad"> CAD</label>
-                </fieldset>
+                    <fieldset class="filter-group">
+                        <legend>Hardware & Design</legend>
+                        <label><input type="checkbox" name="skill" value="arduino"> Arduino</label>
+                        <label><input type="checkbox" name="skill" value="tinkercad"> Tinkercad</label>
+                    </fieldset>
+                </div>
 
-                <fieldset class="filter-group">
-                    <legend>Minimum Difficulty</legend>
-                    <label><input type="radio" name="difficulty" value="1"> ★☆☆☆☆+</label>
-                    <label><input type="radio" name="difficulty" value="2"> ★★☆☆☆+</label>
-                    <label><input type="radio" name="difficulty" value="3"> ★★★☆☆+</label>
-                    <label><input type="radio" name="difficulty" value="4"> ★★★★☆+</label>
-                    <label><input type="radio" name="difficulty" value="5"> ★★★★★</label>
-                </fieldset>
+                <div class="filter-column">
+                    <fieldset class="filter-group">
+                        <legend>Minimum Difficulty</legend>
+                        <label><input type="radio" name="difficulty" value="1"> ★☆☆☆☆+</label>
+                        <label><input type="radio" name="difficulty" value="2"> ★★☆☆☆+</label>
+                        <label><input type="radio" name="difficulty" value="3"> ★★★☆☆+</label>
+                        <label><input type="radio" name="difficulty" value="4"> ★★★★☆+</label>
+                        <label><input type="radio" name="difficulty" value="5"> ★★★★★</label>
+                    </fieldset>
 
-                <fieldset class="filter-group">
-                    <legend>Sort by Date</legend>
-                    <label><input type="radio" name="recency" value="newest"> Newest First</label>
-                    <label><input type="radio" name="recency" value="oldest"> Oldest First</label>
-                </fieldset>
+                    <fieldset class="filter-group">
+                        <legend>Status</legend>
+                        <label><input type="checkbox" name="status" value="completed"> Completed</label>
+                        <label><input type="checkbox" name="status" value="in-progress"> In Progress</label>
+                        <label><input type="checkbox" name="status" value="down"> Down</label>
+                    </fieldset>
+
+                    <fieldset class="filter-group">
+                        <legend>Sort by Date</legend>
+                        <label><input type="radio" name="recency" value="newest"> Newest First</label>
+                        <label><input type="radio" name="recency" value="oldest"> Oldest First</label>
+                    </fieldset>
+                </div>
 
                 <button type="submit" id="apply-filters">Apply Filters</button>
 
             </form>
 
-            <article class="project" id="active-directory-home-lab" data-date="2026-01-15" data-difficulty="3">
+            <article class="project" id="active-directory-home-lab" data-date="2025-06-01" data-difficulty="3" data-status="down">
                 <div class="project-gallery">
                     <img class="gallery-item active" src="images/ad-lab-1.jpg" alt="Active Directory Home Lab screenshot 1">
                     <img class="gallery-item" src="images/ad-lab-2.jpg" alt="Active Directory Home Lab screenshot 2">
@@ -97,8 +108,11 @@
 
                 <div class="project-info">
                     <div class="project-header">
-                        <h3>Active Directory Home Lab</h3>
-                        <p class="project-date">January 2026</p>
+                        <div class="project-title-group">
+                            <h3>Active Directory Home Lab</h3>
+                            <span class="status-tag" data-status="down"></span>
+                        </div>
+                        <p class="project-date">July 2025</p>
                     </div>
 
                     <p class="project-description">
@@ -117,7 +131,7 @@
 
             </article>
 
-            <article class="project" id="arduino-memory-game" data-date="2025-11-02" data-difficulty="2">
+            <article class="project" id="arduino-memory-game" data-date="2024-01-01" data-difficulty="2" data-status="completed">
                 <div class="project-gallery">
                     <img class="gallery-item active" src="images/arduino-game-1.jpg" alt="Arduino Memory Game screenshot 1">
                     <img class="gallery-item" src="images/arduino-game-2.jpg" alt="Arduino Memory Game screenshot 2">
@@ -125,8 +139,11 @@
 
                 <div class="project-info">
                     <div class="project-header">
-                        <h3>Arduino Memory Game</h3>
-                        <p class="project-date">November 2025</p>
+                        <div class="project-title-group">
+                            <h3>Arduino Memory Game</h3>
+                            <span class="status-tag" data-status="completed"></span>
+                        </div>
+                        <p class="project-date">Janurary 2024</p>
                     </div>
 
                     <p class="project-description">
@@ -143,7 +160,7 @@
                 </div>
             </article>
 
-            <article class="project" id="code-atlas" data-date="2026-03-10" data-difficulty="2">
+            <article class="project" id="code-atlas" data-date="2026-07-01" data-difficulty="2" data-status="in-progress">
                 <div class="project-gallery">
                     <img class="gallery-item active" src="images/CodeAtlas-1.jpg" alt="CodeAtlas screenshot 1">
                     <img class="gallery-item" src="images/CodeAtlas-2.jpg" alt="CodeAtlas screenshot 2">
@@ -151,17 +168,27 @@
 
                 <div class="project-info">
                     <div class="project-header">
-                        <h3>CodeAtlas</h3>
-                        <p class="project-date">March 2026</p>
+                        <div class="project-title-group">
+                            <h3>CodeAtlas</h3>
+                            <span class="status-tag" data-status="in-progress"></span>
+                        </div>
+                        <p class="project-date">July 2026</p>
                     </div>
 
                     <p class="project-description">
-                        Built a synchronization tool for Leetcode practice sessions.
+                        An automated LeetCode solution synchronization tool that retrieves accepted SQL
+                        submissions, organizes solutions, manages documentation, and tracks programming 
+                        progress through GitHub Actions and Leetcode's GraphQL API. CodeAtlas was built 
+                        to allow developers to document their coding journey, track their progress, and 
+                        maintain a well-organized repository of their coding solutions with the eventual
+                        goal of syncing problems from across the biggest competitive programming platforms.
                     </p>
 
                     <div class="project-footer">
                         <ul class="project-tags">
                             <li>Python</li>
+                            <li>MySQL</li>
+                            <li>GitHub Actions</li>
                         </ul>
                         <button type="button" class="see-more-btn" data-project="code-atlas">See More</button>
                     </div>

@@ -23,6 +23,12 @@ filterForm.addEventListener('submit', function (event) {
         selectedSkills.push(checkbox.value);
     });
 
+    const checkedStatuses = document.querySelectorAll('input[name="status"]:checked');
+    const selectedStatuses = [];
+    checkedStatuses.forEach(function (checkbox) {
+        selectedStatuses.push(checkbox.value);
+    });
+
     const difficultyRadio = document.querySelector('input[name="difficulty"]:checked');
     const minDifficulty = difficultyRadio ? Number(difficultyRadio.value) : 0;
 
@@ -37,9 +43,11 @@ filterForm.addEventListener('submit', function (event) {
             return projectSkills.includes(skill);
         });
 
+        const matchesStatus = selectedStatuses.length === 0 || selectedStatuses.includes(project.dataset.status);
+
         const matchesDifficulty = Number(project.dataset.difficulty) >= minDifficulty;
 
-        if (matchesSkills && matchesDifficulty) {
+        if (matchesSkills && matchesStatus && matchesDifficulty) {
             project.classList.remove('hidden');
         } else {
             project.classList.add('hidden');
