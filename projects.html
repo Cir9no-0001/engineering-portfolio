@@ -110,7 +110,7 @@
                     <div class="project-header">
                         <div class="project-title-group">
                             <h3>Active Directory Home Lab</h3>
-                            <span class="status-tag" data-status="down"></span>
+                            <p class="status-tag" data-status="down">Down</p>
                         </div>
                         <p class="project-date">July 2025</p>
                     </div>
@@ -131,31 +131,37 @@
 
             </article>
 
-            <article class="project" id="arduino-memory-game" data-date="2024-01-01" data-difficulty="2" data-status="completed">
+            <article class="project" id="simon-says-v2" data-date="2024-01-01" data-difficulty="2" data-status="completed">
                 <div class="project-gallery">
-                    <img class="gallery-item active" src="images/arduino-game-1.jpg" alt="Arduino Memory Game screenshot 1">
-                    <img class="gallery-item" src="images/arduino-game-2.jpg" alt="Arduino Memory Game screenshot 2">
+                    <img class="gallery-item active" src="images/simon-says-v2-1.jpg" alt="Simon Says v2 screenshot 1">
+                    <img class="gallery-item" src="images/simon-says-v2-2.jpg" alt="Simon Says v2 screenshot 2">
                 </div>
 
                 <div class="project-info">
                     <div class="project-header">
                         <div class="project-title-group">
-                            <h3>Arduino Memory Game</h3>
-                            <span class="status-tag" data-status="completed"></span>
+                            <h3>Simon Says V2</h3>
+                            <p class="status-tag" data-status="completed">Completed</p>
                         </div>
-                        <p class="project-date">Janurary 2024</p>
+                        <p class="project-date">January 2024</p>
                     </div>
-
+                    
                     <p class="project-description">
-                        Designed an embedded memory game using Arduino.
+                        An Arduino-based memory game inspired by the classic Simon Says toy, designed and simulated 
+                        using Tinkercad Circuits before being built through custom circuitry and 3D-printed components. 
+                        Simon Says 2 was created to explore embedded systems, hardware-software integration, and 
+                        interactive design by combining LED patterns, audio feedback, and user controls into an engaging 
+                        cognitive training experience. The project aimed to create a fun and progressively challenging game 
+                        while applying principles of circuit design, programming, and physical prototyping.
                     </p>
 
                     <div class="project-footer">
                         <ul class="project-tags">
                             <li>Arduino</li>
                             <li>C++</li>
+                            <li>Tinkercad</li>
                         </ul>
-                        <button type="button" class="see-more-btn" data-project="arduino-memory-game">See More</button>
+                        <button type="button" class="see-more-btn" data-project="simon-says-v2">See More</button>
                     </div>
                 </div>
             </article>
@@ -170,7 +176,7 @@
                     <div class="project-header">
                         <div class="project-title-group">
                             <h3>CodeAtlas</h3>
-                            <span class="status-tag" data-status="in-progress"></span>
+                            <p class="status-tag" data-status="in-progress">In Progress</p>
                         </div>
                         <p class="project-date">July 2026</p>
                     </div>
@@ -197,18 +203,57 @@
             </article>
 
         </section>
-    </main>
 
-    <footer>
-        <p>
-            © 2026 Stanley Chen. All rights reserved.
-        </p>
-    </footer>
+        <footer class="footer">
+            <p class="copyright">
+                © 2026 Stanley Chen. All Rights Reserved.
+            </p>
+
+            <div class="footer-icons">
+                <a href="github-link" target="_blank">
+                    <img src="icons/github.svg" alt="GitHub">
+                </a>
+
+                <a href="linkedin-link" target="_blank">
+                    <img src="icons/linkedin.svg" alt="LinkedIn">
+                </a>
+
+                <a href="mailto:stanley.chen@example.com">
+                    <img src="icons/gmail.svg" alt="Email">
+                </a>
+
+                <a href="instagram.com/username" target="_blank">
+                    <img src="icons/instagram.svg" alt="Instagram">
+                </a>
+
+                <a href="x.com/username" target="_blank">
+                    <img src="icons/x.svg" alt="X">
+                </a>
+
+                <a href="discord-link" target="_blank">
+                    <img src="icons/discord.svg" alt="Discord">
+                </a>
+            </div>
+
+            <div class="footer-actions">
+                <a href="https://github.com/Cir9no-0001/test-portfolio" target="_blank">
+                    View Source Code
+                </a>
+
+                <a href="#top">
+                    ↑ Back to Top
+                </a>
+            </div>
+
+        </footer>
+
+    </main>
 
     <div id="project-modal" class="modal hidden">
         <div class="modal-content"></div>
     </div>
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="js/common.js"></script>
     <script src="js/projects.js"></script>
