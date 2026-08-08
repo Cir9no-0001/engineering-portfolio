@@ -101,6 +101,10 @@ body.hero-active {
     display: flex;
     justify-content: center;
     margin: 20px auto;
+
+    position: sticky;
+    top: 15px;
+    z-index: 100;
 }
 
 .navlinks {
@@ -112,7 +116,8 @@ body.hero-active {
     padding: 2px;
     margin: 0;
 
-    background-color: gray;
+    background-color: rgba(128, 128, 128, 0.35);
+    backdrop-filter: blur(10px);
     border-radius: 16px;
 }
 
@@ -191,8 +196,8 @@ body.hero-active {
     justify-content: center;
     gap: 20px;
     position: relative;
-    padding: 25px 0;
-    margin: 10px 0 20px;
+    padding: 15px 0;
+    margin: 5px 0 20px;
 }
 
 
@@ -259,6 +264,10 @@ body.hero-active {
     text-align: right;
 }
 
+.star-title-right:hover {
+    color: yellow;
+}
+
 .project-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -269,12 +278,25 @@ body.hero-active {
     background-color: #21262d;
     border-radius: 15px;
     height: 250px;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: stretch;
+
     padding: 0;
     overflow: hidden;
+
+    color: white;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    background-color: #30363d;
 }
 
 .project-card img {
@@ -859,7 +881,7 @@ body.hero-active {
     border-radius: 15px;
     text-align: center;
     transition: background-color 0.2s ease, color 0.2s ease;
-    width: 175px;
+    width: 200px;
     height: 40px;
     display: flex;
     align-items: center;
