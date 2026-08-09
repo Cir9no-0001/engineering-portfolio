@@ -136,7 +136,7 @@ while applying principles of circuit design, programming, and physical prototypi
         ]
     },
     "code-atlas": {
-        images: ["images/CodeAtlas-1.jpg", "images/CodeAtlas-2.jpg"],
+        images: ["images/CodeAtlas-1.png", "images/CodeAtlas-2.png", "images/CodeAtlas-3.png"],
         tags: ["Python", "MySQL", "GitHub Actions"],
         description: `
 # Project Overview
@@ -298,6 +298,11 @@ keep improving without ever risking the submitted solution itself.
 // Select project modal and content elements
 const projectModal = document.querySelector('#project-modal');
 const projectModalContent = projectModal.querySelector('.modal-content');
+
+const lightbox = document.querySelector('#image-lightbox');
+const lightboxImage = document.querySelector('#lightbox-image');
+const lightboxClose = document.querySelector('.lightbox-close');
+
 const seeMoreButtons = document.querySelectorAll('.see-more-btn');
 
 let currentDetailIndex = 0;
@@ -324,7 +329,12 @@ seeMoreButtons.forEach(function (button) {
         }).join('');
 
         const galleryHtml = data.images.map(function (src, index) {
-            return '<img class="' + (index === 0 ? 'active' : '') + '" src="' + src + '" alt="' + title + ' image ' + (index + 1) + '">';
+            return `
+                <img 
+                    class="${index === 0 ? 'active' : ''}" 
+                    src="${src}" 
+                    alt="${title} image ${index + 1}">
+            `;
         }).join('');
 
         projectModalContent.innerHTML = `
@@ -372,6 +382,18 @@ seeMoreButtons.forEach(function (button) {
         }, 100);
 
         projectModal.classList.remove('hidden');
+        hideNavbar();
+
+        const galleryImages = projectModalContent.querySelectorAll('.detail-gallery img');
+
+        galleryImages.forEach(function (image) {
+            image.addEventListener('click', function () {
+
+                lightboxImage.src = image.src;
+                lightbox.classList.remove('hidden');
+
+            });
+        });
 
         const description = projectModalContent.querySelector('.detail-description');
         const toggleButton = projectModalContent.querySelector('.description-toggle');
@@ -396,6 +418,7 @@ seeMoreButtons.forEach(function (button) {
         const closeBtn = projectModalContent.querySelector('.modal-close');
         closeBtn.addEventListener('click', function () {
             projectModal.classList.add('hidden');
+            showNavbar();
         });
 
         const prevBtn = projectModalContent.querySelector('.gallery-arrow.prev');
@@ -423,6 +446,7 @@ function showDetailImage(newIndex) {
 projectModal.addEventListener('click', function (event) {
     if (event.target === projectModal) {
         projectModal.classList.add('hidden');
+        showNavbar();
     }
 });
 
@@ -441,3 +465,17 @@ galleries.forEach(function (gallery) {
         }, 3000);
     }
 });
+
+if (lightboxClose && lightbox) {
+
+    lightboxClose.addEventListener('click', function () {
+        lightbox.classList.add('hidden');
+    });
+
+    lightbox.addEventListener('click', function (event) {
+        if (event.target === lightbox) {
+            lightbox.classList.add('hidden');
+        }
+    });
+
+}
