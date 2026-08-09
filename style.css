@@ -1174,3 +1174,20 @@ body.hero-active {
 .footer-actions a:hover {
     color: yellow;
 }
+
+/* Background css below */
+
+#background-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: -1;
+
+    background: #080808;
+
+    pointer-events: none;
+}

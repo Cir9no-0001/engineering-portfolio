@@ -173,7 +173,7 @@ while applying principles of circuit design, programming, and physical prototypi
                 src: "images/CodeAtlas-3.png"
             }
         ],
-        tags: ["Python", "MySQL", "GitHub Actions"],
+        tags: ["Python", "MySQL", "GitHub Actions", "Git", "GitHub", "VS Code"],
         description: `
 # Project Overview
 
@@ -327,6 +327,40 @@ keep improving without ever risking the submitted solution itself.
 `,
         links: [
             { label: "GitHub Repo", url: "https://github.com/Cir9no-0001/CodeAtlas" }
+        ]
+    }, 
+    
+    "engineering-portfolio": {
+        media: [
+            {
+                type: "image",
+                src: "images/eng-1.png"
+            },
+            {
+                type: "image",
+                src: "images/eng-2.png"
+            },
+            {
+                type: "image",
+                src: "images/eng-3.png"
+            },
+            {
+                type: "image",
+                src: "images/eng-4.png"
+            },
+            {
+                type: "image",
+                src: "images/eng-5.png"
+            },
+            {
+                type: "image",
+                src: "images/eng-6.png"
+            }
+        ],
+        tags: ["HTML", "CSS", "JavaScript", "Git", "GitHub", "VS Code"],
+        description: `## Overview`,
+        links: [
+            { label: "GitHub Repo", url: "https://github.com/Cir9no-0001/test-portfolio" }
         ]
     }
 };
