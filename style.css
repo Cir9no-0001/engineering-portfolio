@@ -31,6 +31,7 @@ body.hero-active {
     overflow: hidden;
 }
 
+/*
 .hero {
     min-height: 100vh;
 
@@ -53,6 +54,53 @@ body.hero-active {
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+*/
+
+.hero {
+    min-height: 100vh;
+    height: 100vh;
+
+    position: relative;
+    overflow: hidden;
+
+    background: none;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: -20px;
+
+    background-image:
+        linear-gradient(
+            to bottom,
+            transparent 60%,
+            rgba(11, 11, 11, 0.6) 85%,
+            #0b0b0b 100%
+        ),
+        url("images/hero.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transform:
+        translate(
+            var(--hero-x, 0px),
+            var(--hero-y, 0px)
+        );
+
+    transition: transform 0.15s ease-out;
+
+    z-index: -1;
 }
 
 .hero h1 {
