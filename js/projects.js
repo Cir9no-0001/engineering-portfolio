@@ -106,7 +106,16 @@ searchInput.addEventListener('input', function () {
 // Full project data
 const projectInfo = {
     "active-directory-home-lab": {
-        images: ["images/ad-lab-1.jpg", "images/ad-lab-2.jpg"],
+        media: [
+            {
+                type: "image",
+                src: "images/ad-lab-1.png"
+            },
+            {
+                type: "image",
+                src: "images/ad-lab-2.png"
+            }
+        ],
         tags: ["Windows", "Linux", "VirtualBox"],
         description: `## Overview
 This project involved building a full **Windows Server** domain environment from scratch, configuring Active Directory, DNS, and Group Policy.
@@ -121,7 +130,20 @@ I then used Kali Linux to test the network for common vulnerabilities, simulatin
         ]
     },
     "simon-says-v2": {
-        images: ["images/simon-says-v2-1.jpg", "images/simon-says-v2-2.jpg"],
+        media: [
+            {
+                type: "video",
+                src: "videos/simon-says-v2-1.mp4"
+            },
+            {
+                type: "image",
+                src: "images/simon-says-v2-2.png"
+            },
+            {
+                type: "image",
+                src: "images/simon-says-v2-3.png"
+            }
+        ],
         tags: ["Arduino", "C++", "Tinkercad"],
         description: `## Overview
 An Arduino-based memory game inspired by the classic Simon Says toy, designed and simulated using 
@@ -137,7 +159,20 @@ while applying principles of circuit design, programming, and physical prototypi
         ]
     },
     "code-atlas": {
-        images: ["images/CodeAtlas-1.png", "images/CodeAtlas-2.png", "images/CodeAtlas-3.png"],
+        media: [
+            {
+                type: "image",
+                src: "images/CodeAtlas-1.png"
+            },
+            {
+                type: "image",
+                src: "images/CodeAtlas-2.png"
+            },
+            {
+                type: "image",
+                src: "images/CodeAtlas-3.png"
+            }
+        ],
         tags: ["Python", "MySQL", "GitHub Actions"],
         description: `
 # Project Overview
@@ -304,6 +339,7 @@ const seeMoreButtons = document.querySelectorAll('.see-more-btn');
 // Select lightbox elements
 const lightbox = document.querySelector('#image-lightbox');
 const lightboxImage = document.querySelector('#lightbox-image');
+const lightboxVideo = document.querySelector('#lightbox-video');
 const lightboxClose = document.querySelector('.lightbox-close');
 
 let currentDetailIndex = 0;
@@ -312,32 +348,52 @@ let currentDetailImages = [];
 // See more button and project modal code
 seeMoreButtons.forEach(function (button) {
     button.addEventListener('click', function () {
+
+        // Select project info for see more panel
         const projectId = button.dataset.project;
         const data = projectInfo[projectId];
         const article = document.querySelector('#' + projectId);
         const title = article.querySelector('h3').textContent;
         const date = article.querySelector('.project-date').textContent;
 
-        currentDetailImages = data.images;
+        // Store current media and reset index for gallery navigation
+        currentDetailImages = data.media;
         currentDetailIndex = 0;
 
+        // Insert project tags and links into panel
         const tagsHtml = data.tags.map(function (tag) {
             return '<li>' + tag + '</li>';
         }).join('');
-
         const linksHtml = data.links.map(function (link) {
             return '<a href="' + link.url + '" target="_blank" rel="noopener noreferrer">' + link.label + '</a>';
         }).join('');
 
-        const galleryHtml = data.images.map(function (src, index) {
-            return `
-                <img 
-                    class="${index === 0 ? 'active' : ''}" 
-                    src="${src}" 
-                    alt="${title} image ${index + 1}">
-            `;
+        // Generate gallery HTML from project media (images/videos)
+        const galleryHtml = data.media.map(function (item, index) {
+            if (item.type === "image") {
+                return `
+                    <img 
+                        class="${index === 0 ? 'active' : ''}" 
+                        src="${item.src}" 
+                        alt="${title} image ${index + 1}">
+                `;
+            }
+            if (item.type === "video") {
+                return `
+                    <video 
+                        class="${index === 0 ? 'active' : ''}"
+                        controls
+                        muted
+                        loop
+                        playsinline>
+
+                        <source src="${item.src}" type="video/mp4">
+                    </video>
+                `;
+            }
         }).join('');
 
+        // Build project see more modal HTML using generated gallery, tags, description, and links
         projectModalContent.innerHTML = `
             <button type="button" class="modal-close">&times;</button>
 
@@ -371,11 +427,11 @@ seeMoreButtons.forEach(function (button) {
             <div class="detail-links">${linksHtml}</div>
         `;
 
+        // Mermaid diagram rendering for any diagrams in the project description
         mermaid.initialize({
             startOnLoad: false,
             theme: "dark"
         });
-
         setTimeout(() => {
             mermaid.run({
                 querySelector: ".language-mermaid"
@@ -385,26 +441,34 @@ seeMoreButtons.forEach(function (button) {
         projectModal.classList.remove('hidden');
         hideNavbar();
 
-        const galleryImages = projectModalContent.querySelectorAll('.detail-gallery img');
+        const galleryImages = projectModalContent.querySelectorAll(
+            '.detail-gallery img'
+        );
 
+        // Lightbox logic for clicking on gallery images
         galleryImages.forEach(function (image) {
+
             image.addEventListener('click', function () {
 
-                lightboxImage.src = image.src;
+                lightboxImage.src = image.getAttribute('src');
+
+                lightboxImage.classList.remove('hidden');
+                lightboxVideo.classList.add('hidden');
+
                 lightbox.classList.remove('hidden');
 
             });
+
         });
 
+        // Description cutoff logic for expanding and collapsing
         const description = projectModalContent.querySelector('.detail-description');
         const toggleButton = projectModalContent.querySelector('.description-toggle');
-
         setTimeout(function () {
-            if (description.scrollHeight <= 300) {
+            if (description.scrollHeight <= 200) {
                 toggleButton.style.display = "none";
             }
         }, 0);
-
         toggleButton.addEventListener('click', function () {
             description.classList.toggle('expanded');
             description.classList.toggle('collapsed');
@@ -415,32 +479,50 @@ seeMoreButtons.forEach(function (button) {
                 toggleButton.textContent = "Expand";
             }
         });
-
         const closeBtn = projectModalContent.querySelector('.modal-close');
         closeBtn.addEventListener('click', function () {
             projectModal.classList.add('hidden');
             showNavbar();
         });
 
+        // Gallery navigation logic for previous and next buttons
         const prevBtn = projectModalContent.querySelector('.gallery-arrow.prev');
         const nextBtn = projectModalContent.querySelector('.gallery-arrow.next');
-
         prevBtn.addEventListener('click', function () {
-            showDetailImage(currentDetailIndex - 1);
+            showDetailMedia(currentDetailIndex - 1);
         });
-
         nextBtn.addEventListener('click', function () {
-            showDetailImage(currentDetailIndex + 1);
+            showDetailMedia(currentDetailIndex + 1);
         });
     });
 });
 
 // Changes currently displayed project modal image
-function showDetailImage(newIndex) {
-    const images = projectModalContent.querySelectorAll('.detail-gallery img');
-    images[currentDetailIndex].classList.remove('active');
-    currentDetailIndex = (newIndex + images.length) % images.length;
-    images[currentDetailIndex].classList.add('active');
+function showDetailMedia(newIndex) {
+
+    const galleryItems = projectModalContent.querySelectorAll(
+        '.detail-gallery img, .detail-gallery video'
+    );
+
+    const currentItem = galleryItems[currentDetailIndex];
+
+    if (currentItem.tagName === "VIDEO") {
+        currentItem.pause();
+        currentItem.currentTime = 0;
+    }
+
+    currentItem.classList.remove('active');
+
+    currentDetailIndex =
+        (newIndex + galleryItems.length) % galleryItems.length;
+
+    const nextItem = galleryItems[currentDetailIndex];
+
+    nextItem.classList.add('active');
+
+    if (nextItem.tagName === "VIDEO") {
+        nextItem.play();
+    }
 }
 
 // Close modal when user clicks outside the content area
@@ -454,16 +536,16 @@ projectModal.addEventListener('click', function (event) {
 // Gallery auto-rotation code
 const galleries = document.querySelectorAll('.project-gallery');
 
-// Auto-rotate images in each gallery every 3 seconds
+// Auto-rotate gallery items in each gallery every 3 seconds
 galleries.forEach(function (gallery) {
-    const images = gallery.querySelectorAll('.gallery-item');
+    const galleryItems = gallery.querySelectorAll('.gallery-item');
     let currentIndex = 0;
 
-    if (images.length > 1) {
+    if (galleryItems.length > 1) {
         setInterval(function () {
-            images[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % images.length;
-            images[currentIndex].classList.add('active');
+            galleryItems[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % galleryItems.length;
+            galleryItems[currentIndex].classList.add('active');
         }, 3000);
     }
 });
@@ -472,12 +554,20 @@ galleries.forEach(function (gallery) {
 if (lightboxClose && lightbox) {
 
     lightboxClose.addEventListener('click', function () {
+
         lightbox.classList.add('hidden');
+
+        lightboxVideo.pause();
+        lightboxVideo.currentTime = 0;
+
     });
 
     lightbox.addEventListener('click', function (event) {
         if (event.target === lightbox) {
             lightbox.classList.add('hidden');
+
+            lightboxVideo.pause();
+            lightboxVideo.currentTime = 0;
         }
     });
 
