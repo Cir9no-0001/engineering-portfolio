@@ -476,7 +476,8 @@ body.hero-active {
     background: #000;
 }
 
-.detail-gallery img {
+.detail-gallery img,
+.detail-gallery video {
     position: absolute;
     top: 0;
     left: 0;
@@ -485,10 +486,21 @@ body.hero-active {
     object-fit: contain;
     opacity: 0;
     transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
-.detail-gallery img.active {
+.detail-gallery img.active,
+.detail-gallery video.active {
     opacity: 1;
+    pointer-events: auto;
+}
+
+.detail-gallery img {
+    cursor: zoom-in;
+}
+
+.detail-gallery video {
+    background: black;
 }
 
 .gallery-arrow {
@@ -569,7 +581,7 @@ body.hero-active {
 }
 
 .detail-description.collapsed {
-    max-height: 300px;
+    max-height: 200px;
 }
 
 .detail-description.expanded {
@@ -865,7 +877,8 @@ body.hero-active {
     display: none;
 }
 
-.lightbox img {
+.lightbox img,
+.lightbox video {
     max-width: 90%;
     max-height: 90%;
     object-fit: contain;
