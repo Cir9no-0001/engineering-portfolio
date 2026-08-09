@@ -13,7 +13,7 @@ filterToggle.addEventListener('click', function () {
 const filterForm = document.querySelector('#filter-panel');
 const projects = document.querySelectorAll('.project');
 
-// Filter form logic for skills, difficulty, and recency
+// Filter form logic for skills, status, difficulty, and recency
 filterForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -31,6 +31,7 @@ filterForm.addEventListener('submit', function (event) {
 
     const difficultyRadio = document.querySelector('input[name="difficulty"]:checked');
     const minDifficulty = difficultyRadio ? Number(difficultyRadio.value) : 0;
+
 
     projects.forEach(function (project) {
         const projectTags = project.querySelectorAll('.project-tags li');
@@ -298,12 +299,12 @@ keep improving without ever risking the submitted solution itself.
 // Select project modal and content elements
 const projectModal = document.querySelector('#project-modal');
 const projectModalContent = projectModal.querySelector('.modal-content');
+const seeMoreButtons = document.querySelectorAll('.see-more-btn');
 
+// Select lightbox elements
 const lightbox = document.querySelector('#image-lightbox');
 const lightboxImage = document.querySelector('#lightbox-image');
 const lightboxClose = document.querySelector('.lightbox-close');
-
-const seeMoreButtons = document.querySelectorAll('.see-more-btn');
 
 let currentDetailIndex = 0;
 let currentDetailImages = [];
@@ -453,6 +454,7 @@ projectModal.addEventListener('click', function (event) {
 // Gallery auto-rotation code
 const galleries = document.querySelectorAll('.project-gallery');
 
+// Auto-rotate images in each gallery every 3 seconds
 galleries.forEach(function (gallery) {
     const images = gallery.querySelectorAll('.gallery-item');
     let currentIndex = 0;
@@ -466,6 +468,7 @@ galleries.forEach(function (gallery) {
     }
 });
 
+// Close lightbox logic
 if (lightboxClose && lightbox) {
 
     lightboxClose.addEventListener('click', function () {
