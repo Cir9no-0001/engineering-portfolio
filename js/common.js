@@ -18,3 +18,21 @@ if (musicButton && music) {
         }
     });
 }
+
+/* Navbar hide/show code below */
+
+function hideNavbar() {
+    const navbar = document.querySelector('.navbar');
+
+    if (navbar) {
+        navbar.classList.add('modal-open');
+    }
+}
+
+function showNavbar() {
+    const navbar = document.querySelector('.navbar');
+
+    if (navbar) {
+        navbar.classList.remove('modal-open');
+    }
+}

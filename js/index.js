@@ -82,6 +82,7 @@ skillCards.forEach(function (card) {
         `;
 
         skillModal.classList.remove('hidden');
+        hideNavbar();
     });
 });
 
@@ -89,5 +90,6 @@ skillCards.forEach(function (card) {
 skillModal.addEventListener('click', function (event) {
     if (event.target === skillModal) {
         skillModal.classList.add('hidden');
+        showNavbar();
     }
 });
