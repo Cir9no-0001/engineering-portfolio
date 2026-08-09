@@ -43,6 +43,51 @@ arrow.addEventListener("click", function(event) {
     }, 650);
 });
 
+// Hero parallax effect
+function initializeHeroParallax() {
+    const hero = document.querySelector(".hero");
+
+    if (!hero) {
+        return;
+    }
+
+    hero.addEventListener("mousemove", function(event) {
+        const x =
+            event.clientX / window.innerWidth - 0.5;
+
+        const y =
+            event.clientY / window.innerHeight - 0.5;
+
+        const intensity = 40;
+        
+        hero.style.setProperty(
+            "--hero-x",
+            `${x * -intensity}px`
+        );
+
+        hero.style.setProperty(
+            "--hero-y",
+            `${y * -intensity}px`
+        );
+
+    });
+
+    hero.addEventListener("mouseleave", function() {
+
+        hero.style.setProperty(
+            "--hero-x",
+            "0px"
+        );
+
+        hero.style.setProperty(
+            "--hero-y",
+            "0px"
+        );
+
+    });
+}
+
+initializeHeroParallax();
 
 /* Technical skills chart code below */
 
