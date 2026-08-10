@@ -31,32 +31,6 @@ body.hero-active {
     overflow: hidden;
 }
 
-/*
-.hero {
-    min-height: 100vh;
-
-    background-image:
-        linear-gradient(
-            to bottom,
-            transparent 60%,
-            rgba(11, 11, 11, 0.6) 85%,
-            #0b0b0b 100%
-        ),
-        url("images/hero.png");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-*/
-
 .hero {
     min-height: 100vh;
     height: 100vh;
@@ -104,14 +78,18 @@ body.hero-active {
 }
 
 .hero h1 {
-    font-size: 4rem;
-    margin-bottom: 10px;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1;
 }
 
 .hero h2 {
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: yellow;
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.75;
 }
 
 .down-arrow {
