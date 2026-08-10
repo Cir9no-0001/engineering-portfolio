@@ -47,10 +47,6 @@ arrow.addEventListener("click", function(event) {
 function initializeHeroParallax() {
     const hero = document.querySelector(".hero");
 
-    if (!hero) {
-        return;
-    }
-
     hero.addEventListener("mousemove", function(event) {
         const x =
             event.clientX / window.innerWidth - 0.5;

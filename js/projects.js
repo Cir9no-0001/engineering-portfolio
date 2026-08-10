@@ -114,6 +114,14 @@ const projectInfo = {
             {
                 type: "image",
                 src: "images/ad-lab-2.png"
+            },
+            {
+                type: "image",
+                src: "images/ad-lab-3.png"
+            },
+            {
+                type: "image",
+                src: "images/ad-lab-4.png"
             }
         ],
         tags: ["Windows", "Linux", "VirtualBox"],
@@ -333,8 +341,8 @@ keep improving without ever risking the submitted solution itself.
     "engineering-portfolio": {
         media: [
             {
-                type: "image",
-                src: "images/eng-1.png"
+                type: "video",
+                src: "videos/eng-1.mp4"
             },
             {
                 type: "image",
@@ -450,7 +458,7 @@ seeMoreButtons.forEach(function (button) {
 
             <div class="description-container">
                 <div class="detail-description collapsed">
-                    ${marked.parse(data.description)}
+                    ${DOMPurify.sanitize(marked.parse(data.description))}
                 </div>
             
                 <button type="button" class="description-toggle">
