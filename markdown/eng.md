@@ -40,14 +40,11 @@ selected filters.
 
 ### Project Documentation
 
-Project documentation is separated from the website layout by storing each project's content as structured
-data inside the JavaScript project information object. When a project is opened, JavaScript retrieves the
-corresponding project data, generates the media gallery, tags, links, and metadata, converts the Markdown
-description into HTML using Marked.js, sanitizes the output using DOMPurify, and renders the final content
-inside the reusable project modal.
+Project documentation is separated from the website layout by storing each project's content as external Markdown files alongside structured project metadata inside the JavaScript project information object.
 
-This approach allows every project to follow the same display structure while maintaining unique
-documentation, media, technical details, and resources without creating separate HTML pages.
+When a project is opened, JavaScript retrieves the corresponding project metadata, loads the associated Markdown documentation file, generates the media gallery, tags, links, and metadata, converts the Markdown content into HTML using Marked.js, sanitizes the generated output using DOMPurify, and renders the final content inside the reusable project modal.
+
+This approach separates content from application logic, allowing project documentation to be updated independently from the website code while maintaining a consistent display structure across all projects.
 
 Each expanded project panel contains:
 
@@ -92,8 +89,9 @@ organization, and version control to a practical application.
 
 ```mermaid
 flowchart TD
-A[HTML Pages] --> B[Shared Styling]
-A --> C[JavaScript Modules]
+
+    A[HTML Pages] --> B[Shared Styling]
+    A --> C[JavaScript Modules]
 
     B --> D[Responsive User Interface]
 
@@ -107,19 +105,24 @@ A --> C[JavaScript Modules]
     F --> K[Project Modal Interface]
     F --> L[Gallery & Lightbox]
 
-    J --> M[Markdown Strings in projectInfo]
-    M --> N[Marked.js]
-    M --> O[Mermaid.js]
-    M --> P[DOMPurify]
+    J --> M[projectInfo Metadata]
+    M --> N[Markdown Files]
+    N --> O[Fetch API]
 
-    E --> Q[Hero & Skill Interactions]
-    G --> R[Contact Features]
+    O --> P[Marked.js Markdown Conversion]
+    P --> Q[DOMPurify HTML Sanitization]
+    Q --> K
+
+    P --> R[Mermaid.js Diagram Rendering]
+
+    E --> S[Hero & Skill Interactions]
+    G --> T[Contact Features]
 
     I --> D
     K --> D
     L --> D
-    Q --> D
-    R --> D
+    S --> D
+    T --> D
 
 ```
 
@@ -129,25 +132,24 @@ A --> C[JavaScript Modules]
 
 ### Dynamic Project Documentation Rendering
 
-**Decision:** Project descriptions are stored as structured Markdown strings inside the JavaScript
-project data object and dynamically rendered inside reusable project modals instead of creating
-separate HTML pages for each project.
+**Decision:** Project descriptions are stored as external Markdown files linked through the JavaScript project data object and dynamically rendered inside reusable project modals instead of creating separate HTML pages for each project.
 
-**Why:** A traditional portfolio often requires manually creating individual pages or HTML sections
-for every project, which creates duplicated layouts and increases maintenance complexity. This portfolio
-separates project content from the interface structure by storing project information, media, tags, links,
-and documentation as reusable data objects.
+**Why:** A traditional portfolio often requires manually creating individual pages or HTML sections for every project, which creates duplicated layouts and increases maintenance complexity. This portfolio separates project content from interface logic by storing project metadata, media, tags, links, and documentation as reusable data structures.
 
 When a user opens a project, the system:
 
-- Retrieves the selected project's data from the JavaScript project information object
+- Retrieves the selected project's metadata from the JavaScript project information object
+- Loads the associated Markdown documentation file
 - Generates the project gallery, tags, links, and metadata dynamically
-- Converts the Markdown description into HTML using Marked.js
+- Converts Markdown into HTML using Marked.js
 - Sanitizes the generated HTML using DOMPurify
 - Inserts the final content into the reusable project modal interface
 
-This creates a scalable documentation system where new projects can be added by creating a structured
-project entry rather than manually developing new webpage layouts.
+This creates a scalable documentation system where new projects can be added by creating a structured metadata entry and documentation file rather than manually developing new webpage layouts.
+
+**Trade-off:** Separating documentation into external files requires maintaining references between
+project metadata and Markdown files, but it improves maintainability by allowing content updates without
+modifying the application logic.
 
 **Trade-off:** Storing documentation inside JavaScript increases the size of the project script and
 requires updating the source code when adding new projects, but it allows all project rendering logic
@@ -201,13 +203,11 @@ than presenting skills as isolated keywords.
 
 **Decision:** Dynamically generated project documentation is sanitized before being inserted into the webpage.
 
-**Why:** Project descriptions are stored as Markdown strings inside the JavaScript project data object
-and converted into HTML when a user opens a project modal. Since generated HTML is inserted into the DOM
-dynamically, directly rendering the output could introduce security risks if unsafe content is included.
+**Why:** Project descriptions are stored as external Markdown files and loaded dynamically when a user opens a project modal. Since the Markdown content is converted into HTML and inserted into the DOM dynamically, direct rendering could introduce security risks if unsafe content is included.
 
 The rendering pipeline is:
 
-Markdown String → Marked.js HTML Conversion → DOMPurify Sanitization → Modal Rendering
+Markdown File -> Fetch Request -> Marked.js HTML Conversion -> DOMPurify Sanitization -> Modal Rendering
 
 DOMPurify acts as a security layer by filtering potentially unsafe HTML elements and attributes before
 the content is displayed to users. This allows project documentation to support rich formatting such as
@@ -231,3 +231,22 @@ all logic inside a single script.
 Separating responsibilities reduces code coupling, improves maintainability, and makes future feature development easier.
 
 **Trade-off:** Multiple files require clearer organization and dependency management compared to a single script.
+
+### Content-Code Separation
+
+**Decision:** Project documentation is stored separately from application logic through external
+Markdown files rather than embedded directly inside JavaScript.
+
+**Why:** Separating content from code improves maintainability by allowing documentation to evolve
+without modifying the rendering system. The website logic remains responsible for displaying and
+interacting with projects, while Markdown files act as the source of project-specific documentation.
+
+This separation allows:
+
+- Documentation updates without modifying JavaScript
+- Cleaner version control changes
+- Easier project expansion
+- More readable project metadata files
+
+**Trade-off:** External documentation files require additional file management and dependency paths
+between project metadata and documentation.
