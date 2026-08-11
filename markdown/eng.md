@@ -89,7 +89,6 @@ organization, and version control to a practical application.
 
 ```mermaid
 flowchart TD
-
     A[HTML Pages] --> B[Shared Styling]
     A --> C[JavaScript Modules]
 
@@ -111,18 +110,19 @@ flowchart TD
 
     O --> P[Marked.js Markdown Conversion]
     P --> Q[DOMPurify HTML Sanitization]
-    Q --> K
+    Q --> R[Project Content DOM]
 
-    P --> R[Mermaid.js Diagram Rendering]
+    R --> S[Mermaid.js Diagram Rendering]
+    S --> K
 
-    E --> S[Hero & Skill Interactions]
-    G --> T[Contact Features]
+    E --> T[Hero & Skill Interactions]
+    G --> U[Contact Features and Resume Printer]
 
     I --> D
     K --> D
     L --> D
-    S --> D
     T --> D
+    U --> D
 
 ```
 
@@ -151,10 +151,6 @@ This creates a scalable documentation system where new projects can be added by 
 project metadata and Markdown files, but it improves maintainability by allowing content updates without
 modifying the application logic.
 
-**Trade-off:** Storing documentation inside JavaScript increases the size of the project script and
-requires updating the source code when adding new projects, but it allows all project rendering logic
-and content management to remain centralized within the existing frontend architecture.
-
 ### Metadata-Driven Project Organization
 
 **Decision:** Projects are organized using embedded metadata attributes rather than manually maintaining
@@ -175,8 +171,6 @@ This enables:
 As the project archive grows, new projects can be integrated into the existing filtering system by following the same metadata structure.
 
 **Trade-off:** Maintaining accurate metadata becomes an additional responsibility when adding or updating projects.
-
----
 
 ### Skills as Evidence-Based Navigation
 
