@@ -626,7 +626,7 @@ body.hero-active {
 }
 
 .detail-description.expanded {
-    max-height: 5000px;
+    max-height: 10000px;
 }
 
 .description-toggle {
