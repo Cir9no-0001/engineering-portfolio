@@ -20,7 +20,7 @@
 }
 
 html[data-theme="light"] {
-    --background: #e4e4e4;
+    --background: #ffdeb2;
 
     --surface: #fff;
     --surface-secondary: #e5e5e5;
