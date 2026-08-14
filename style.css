@@ -1,6 +1,49 @@
+:root {
+    --background: #000;
+
+    --surface: #171f2b;
+    --surface-secondary: #21262d;
+    --surface-tertiary: #1a1a1a;
+    --surface-hover: #30363d;
+
+    --text: #fff;
+    --text-secondary: #aaa;
+
+    --border: #444;
+
+    --accent: yellow;
+    --accent-hover: #e6e600;
+
+    --overlay: rgba(0, 0, 0, 0.7);
+    --navbar-background: rgba(128, 128, 128, 0.35);
+
+}
+
+html[data-theme="light"] {
+    --background: #e4e4e4;
+
+    --surface: #fff;
+    --surface-secondary: #e5e5e5;
+    --surface-tertiary: #f0f0f0;
+    --surface-hover: #d5d5d5;
+
+    --text: #111;
+    --text-secondary: #555;
+
+    --border: #ccc;
+
+    --accent: #d4a900;
+    --accent-hover: #b89000;
+
+    --overlay: rgba(0, 0, 0, 0.45);
+    --navbar-background: rgba(180, 180, 180, 0.45);
+}
+
 html {
     scroll-behavior: smooth;
 }
+
+
 
 body {
     overflow-x: hidden;
@@ -14,8 +57,8 @@ a {
 body {
     margin: 0;
     font-family: 'Helvetica', Arial, sans-serif;
-    color: white;
-    background-color: black;
+    color: var(--text);
+    background-color: var(--background);
 }
 
 main {
@@ -45,6 +88,7 @@ body.hero-active {
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: #fff;
 }
 
 .hero::before {
@@ -57,8 +101,8 @@ body.hero-active {
         linear-gradient(
             to bottom,
             transparent 60%,
-            rgba(11, 11, 11, 0.6) 85%,
-            #0b0b0b 100%
+            color-mix(in srgb, var(--background) 60%, transparent) 85%,
+            var(--background) 100%
         ),
         url("images/hero.png");
 
@@ -75,6 +119,7 @@ body.hero-active {
     transition: transform 0.15s ease-out;
 
     z-index: -1;
+    
 }
 
 .hero h1 {
@@ -100,7 +145,7 @@ body.hero-active {
     font-size: 2.5rem;
 
     text-decoration: none;
-    color: white;
+    color: var(--text);
 
     animation: bounce 2s infinite;
 }
@@ -138,6 +183,48 @@ body.hero-active {
     pointer-events: none;
 }
 
+.theme-selector {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    margin-left: 10px;
+    padding: 3px;
+
+    background: var(--navbar-background);
+    backdrop-filter: blur(10px);
+
+    border-radius: 16px;
+}
+
+.theme-option {
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: transparent;
+    color: var(--text);
+
+    cursor: pointer;
+
+    font-size: 1rem;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.theme-option:hover {
+    background: var(--surface-secondary);
+}
+
+.theme-option.active {
+    background: var(--text);
+    color: var(--background);
+}
+
 .navlinks {
     display: flex;
     align-items: center;
@@ -147,7 +234,7 @@ body.hero-active {
     padding: 2px;
     margin: 0;
 
-    background-color: rgba(128, 128, 128, 0.35);
+    background-color: var(--navbar-background);
     backdrop-filter: blur(10px);
     border-radius: 16px;
 }
@@ -159,7 +246,7 @@ body.hero-active {
 .navlinks a {
     text-decoration: none;
     font-weight: bold;
-    color: white;
+    color: var(--text);
 
     padding: 10px 18px;
     border-radius: 12px;
@@ -168,16 +255,16 @@ body.hero-active {
 }
 
 .navlinks a:hover {
-    background:white;
-    color:black;
+    background: var(--text);
+    color: var(--background);
 }
 
 .music-btn {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: gray;
-    color: white;
+    background: var(--surface-secondary);
+    color: var(--text);
     border: none;
     border-radius: 50%;
     width: 50px;
@@ -188,8 +275,8 @@ body.hero-active {
 }
 
 .music-btn:hover {
-    background: white;
-    color: black;
+    background: var(--text);
+    color: var(--background);
 }
 
 #intro {
@@ -239,7 +326,7 @@ body.hero-active {
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: white;
+    background-color: var(--text);
 }
 
 
@@ -250,12 +337,12 @@ body.hero-active {
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: white;
+    background-color: var(--text);
 }
 
 
 #brief p {
-    background: gray;
+    background: var(--surface);
     padding: 10px 20px;
     border-radius: 30px;
     margin-top: 0;
@@ -263,7 +350,7 @@ body.hero-active {
 }
 
 #about {
-    background:gray;
+    background: var(--surface);
     padding:10px 40px;
     border-radius:20px;
     font-size:1.2rem;
@@ -273,7 +360,7 @@ body.hero-active {
 }
 
 #star-projects {
-    background-color: #161b22;
+    background-color: var(--surface);
     border-radius: 20px;
     padding: 30px;
     margin-top: 0;
@@ -296,7 +383,7 @@ body.hero-active {
 }
 
 .star-title-right:hover {
-    color: yellow;
+    color: var(--accent-hover);
 }
 
 .project-container {
@@ -306,7 +393,7 @@ body.hero-active {
 }
 
 .project-card {
-    background-color: #21262d;
+    background-color: var(--surface-secondary);
     border-radius: 15px;
     height: 250px;
 
@@ -318,7 +405,7 @@ body.hero-active {
     padding: 0;
     overflow: hidden;
 
-    color: white;
+    color: var(--text);
     text-decoration: none;
 
     cursor: pointer;
@@ -327,7 +414,7 @@ body.hero-active {
 
 .project-card:hover {
     transform: translateY(-5px);
-    background-color: #30363d;
+    background-color: var(--surface-hover);
 }
 
 .project-card img {
@@ -340,11 +427,11 @@ body.hero-active {
 .project-card h3 {
     margin: 0;
     padding: 15px 20px;
-    background: rgba(0, 0, 0, 0.6);
+
 }
 
 #skills {
-    background-color: #161b22;
+    background-color: var(--surface);
     border-radius: 20px;
     padding: 40px;
     margin-top: 0;
@@ -373,11 +460,11 @@ body.hero-active {
     gap: 20px;
     padding-bottom: 30px;
     margin-bottom: 30px;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid var(--border);
 }
 
 .skill-card {
-    background-color: #21262d;
+    background-color: var(--surface-secondary);
     border: none;
     border-radius: 15px;
     height: 150px;
@@ -387,7 +474,7 @@ body.hero-active {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    color: white;
+    color: var(--text);
     transition: 0.2s ease;
     font-family: inherit;
     font-size: inherit;
@@ -398,7 +485,6 @@ body.hero-active {
     height: 40px;
     margin-bottom: 10px;
     object-fit: contain;
-    filter: brightness(0) invert(1);
 }
 
 .skill-name {
@@ -407,13 +493,13 @@ body.hero-active {
 }
 
 .skill-time {
-    color: #aaa;
+    color: var(--text-secondary);
     font-size: 0.9rem;
 }
 
 .skill-card:hover {
     transform: translateY(-5px);
-    background-color: #30363d;
+    background-color: var(--surface-hover);
 }
 
 .skills-container:last-child {
@@ -422,7 +508,7 @@ body.hero-active {
 }
 
 .skill-description{
-    background-color: #1a1a1a;
+    background-color: var(--surface-tertiary);
     border-radius: 8px;
     padding: 1.5rem 2rem;
     margin: 0px;
@@ -432,7 +518,7 @@ body.hero-active {
 
 .skill-separator {
     border: none;
-    border-top: 1px solid #444;
+    border-top: 1px solid var(--border);
     margin: 20px 0;
 }
 
@@ -442,7 +528,7 @@ body.hero-active {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: var(--overlay);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -454,7 +540,7 @@ body.hero-active {
 }
 
 .modal-content {
-    background: #21262d;
+    background: var(--surface-secondary);
     padding: 40px;
     border-radius: 20px;
     max-width: 500px;
@@ -476,14 +562,14 @@ body.hero-active {
     right: 20px;
     background: none;
     border: none;
-    color: white;
+    color: var(--text);
     font-size: 1.5rem;
     cursor: pointer;
     line-height: 1;
 }
 
 .modal-close:hover {
-    color: yellow;
+    color: var(--accent-hover);
 }
 
 .detail-header {
@@ -504,7 +590,7 @@ body.hero-active {
 
 .detail-separator {
     border: none;
-    border-top: 1px solid #444;
+    border-top: 1px solid var(--border);
     margin: 20px 0;
 }
 
@@ -514,7 +600,7 @@ body.hero-active {
     height: 350px;
     border-radius: 12px;
     overflow: hidden;
-    background: #000;
+    background: var(--background);
 }
 
 .detail-gallery img,
@@ -541,15 +627,15 @@ body.hero-active {
 }
 
 .detail-gallery video {
-    background: black;
+    background: var(--background);
 }
 
 .gallery-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
+    background: var(--accent);
+    color: var(--background);
     border: none;
     width: 40px;
     height: 40px;
@@ -560,8 +646,7 @@ body.hero-active {
 }
 
 .gallery-arrow:hover {
-    background: yellow;
-    color: black;
+    background: var(--text);
 }
 
 .gallery-arrow.prev {
@@ -582,13 +667,13 @@ body.hero-active {
 }
 
 .detail-tags li {
-    background: #161b22;
+    background: var(--surface);
     padding: 6px 14px;
     font-size: 0.9rem;
 }
 
 .detail-description {
-    background-color: #1a1a1a;
+    background-color: var(--surface-tertiary);
     border-radius: 8px;
     padding: 1.5rem 2rem;
     margin: 0px;
@@ -605,8 +690,8 @@ body.hero-active {
 }
 
 .detail-links a {
-    background: yellow;
-    color: black;
+    background: var(--accent);
+    color: var(--background);
     padding: 10px 18px;
     border-radius: 12px;
     font-weight: bold;
@@ -614,7 +699,7 @@ body.hero-active {
 }
 
 .detail-links a:hover {
-    background: white;
+    background: var(--text);
 }
 
 .description-container {
@@ -633,8 +718,8 @@ body.hero-active {
     display: block;
     width: 100%;
 
-    background: yellow;
-    color: black;
+    background: var(--accent);
+    color: var(--background);
     border: none;
 
     padding: 10px;
@@ -647,7 +732,7 @@ body.hero-active {
 }
 
 .description-toggle:hover {
-    background: white;
+    background: var(--text);
 }
 
 /* Projects.html CSS Below */
@@ -663,7 +748,7 @@ body.hero-active {
 }
 
 .projects-header p {
-    color: #aaa;
+    color: var(--text-secondary);
     font-size: 1.1rem;
     margin: 0;
 }
@@ -677,9 +762,9 @@ body.hero-active {
 }
 
 .filter-btn {
-    background: gray;
-    color: white;
-    border: none;
+    background: var(--surface);
+    color: var(--text);
+    border: 2px solid var(--border);
     padding: 10px 18px;
     border-radius: 12px;
     cursor: pointer;
@@ -687,14 +772,14 @@ body.hero-active {
 }
 
 .filter-btn:hover {
-    background: white;
-    color: black;
+    background: var(--text);
+    color: var(--background);
 }
 
 .search-input {
-    background: #21262d;
-    color: white;
-    border: none;
+    background: var(--surface-secondary);
+    color: var(--text);
+    border: 2px solid var(--border);
     padding: 10px 18px;
     border-radius: 12px;
     font-size: 1rem;
@@ -702,11 +787,11 @@ body.hero-active {
 }
 
 .search-input::placeholder {
-    color: #aaa;
+    color: var(--text-secondary);
 }
 
 .filter-panel {
-    background: #161b22;
+    background: var(--surface);
     border-radius: 20px;
     padding: 30px;
     margin-bottom: 20px;
@@ -722,16 +807,12 @@ body.hero-active {
     flex: 1 1 300px;
 }
 
-#apply-filters {
-    width: 100%;
-}
-
 .filter-panel.hidden {
     display: none;
 }
 
 .filter-group {
-    border: 1px solid #444;
+    border: 1px solid var(--border);
     border-radius: 12px;
     padding: 15px 20px;
 }
@@ -739,14 +820,14 @@ body.hero-active {
 .filter-group legend {
     padding: 0 10px;
     font-weight: bold;
-    color: yellow;
+    color: var(--accent);
 }
 
 .filter-group label {
     display: inline-flex;
     align-items: center;
-    background: #21262d;
-    color: white;
+    background: var(--surface-secondary);
+    color: var(--text);
     padding: 8px 16px;
     border-radius: 20px;
     cursor: pointer;
@@ -755,23 +836,23 @@ body.hero-active {
 }
 
 .filter-group label:hover {
-    background: #30363d;
+    background: var(--surface-hover);
 }
 
 .filter-group input {
-    accent-color: yellow;
+    accent-color: var(--accent);
     margin-right: 8px;
 }
 
 .filter-group input:checked + label,
 .filter-group label:has(input:checked) {
-    background: yellow;
-    color: black;
+    background: var(--accent);
+    color: var(--background);
 }
 
 #apply-filters {
-    background: yellow;
-    color: black;
+    background: var(--accent);
+    color: var(--surface);
     border: none;
     padding: 12px 24px;
     border-radius: 12px;
@@ -780,14 +861,15 @@ body.hero-active {
     cursor: pointer;
     align-self: center;
     transition: background-color 0.2s ease;
+    width: 100%;
 }
 
 #apply-filters:hover {
-    background: white;
+    background: var(--text);
 }
 
 .project {
-    background: #161b22;
+    background: var(--surface);
     border-radius: 20px;
     padding: 20px;
     margin-bottom: 25px;
@@ -801,7 +883,7 @@ body.hero-active {
     height: 220px;
     flex-shrink: 0;
     border-radius: 15px;
-    border: 1px solid #444;
+    border: 1px solid var(--border);
     overflow: hidden;
 }
 
@@ -878,14 +960,14 @@ body.hero-active {
 }
 
 .project-tags li {
-    background: #21262d;
+    background: var(--surface-secondary);
     padding: 5px 10px;
     font-size: 0.9rem;
 }
 
 .see-more-btn {
-    background: yellow;
-    color: black;
+    background: var(--accent);
+    color: var(--background);
     border: none;
     padding: 10px 18px;
     border-radius: 12px;
@@ -895,7 +977,7 @@ body.hero-active {
 }
 
 .see-more-btn:hover {
-    background: white;
+    background: var(--text);
 }
 
 .lightbox {
@@ -935,7 +1017,7 @@ body.hero-active {
     background: none;
     border: none;
 
-    color: white;
+    color: #fff;
     font-size: 3rem;
 
     cursor: pointer;
@@ -959,7 +1041,7 @@ body.hero-active {
     margin: 0 auto;
     width: 200px;
     height: 200px;
-    border: 2px solid white;
+    border: 2px solid var(--text);
     object-fit: cover;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -981,7 +1063,7 @@ body.hero-active {
 }
 
 .contact-box {
-    background: #21262d;
+    background: var(--surface);
     padding: 20px 30px;
     border-radius: 15px;
     text-align: center;
@@ -995,8 +1077,8 @@ body.hero-active {
 }
 
 .contact-box:hover {
-    background: yellow;
-    color: black;
+    background: var(--accent);
+    color: var(--background);
 }
 
 .contact-box a {
@@ -1010,8 +1092,8 @@ body.hero-active {
 .contact-icon {
     width: 35px;
     height: 35px;
-    filter: brightness(0) invert(1);
     transition: 0.2s;
+    
 }
 
 .resume-printer {
@@ -1058,8 +1140,8 @@ body.hero-active {
 }
 
 #print-btn:hover {
-    background: white;
-    color: black;
+    background: var(--text);
+    color: var(--background);
 }
 
 .paper {
@@ -1069,7 +1151,7 @@ body.hero-active {
     transform: translateX(-50%);
     width: 70%;
     height: 35%;
-    background: white;
+    background: #fff;
     color: black;
     border-radius: 4px;
     z-index: 1;
@@ -1091,8 +1173,8 @@ body.hero-active {
 .modal-link {
     display: inline-block;
     margin-top: 15px;
-    background: yellow;
-    color: black;
+    background: var(--accent);
+    color: var(--background);
     padding: 8px 16px;
     border-radius: 10px;
     font-weight: bold;
@@ -1101,11 +1183,6 @@ body.hero-active {
 .hidden,
 .search-hidden {
     display: none;
-}
-
-.paper.printed {
-    opacity: 1;
-    transform: translate(-50%, -25px);
 }
 
 /* 404.html CSS Below */
@@ -1120,7 +1197,7 @@ body.hero-active {
 .not-found h1 {
     font-size: 6rem;
     margin-bottom: 10px;
-    color: yellow;
+    color: var(--accent);
 }
 
 .not-found p {
@@ -1149,8 +1226,8 @@ body.hero-active {
 
 .home-link {
     display: inline-block;
-    background: yellow;
-    color: black;
+    background: var(--accent);
+    color: var(--background);
     padding: 10px 24px;
     border-radius: 20px;
     font-weight: bold;
@@ -1159,23 +1236,23 @@ body.hero-active {
 }
 
 .home-link:hover {
-    background: #e6e600;
+    background: var(--accent-hover);
 }
 
 /* Footer CSS Below */
 
 .footer {
-    background: #161b22;
+    background: var(--surface);
     padding: 30px;
     border-radius: 20px 20px 0 0;
     text-align: center;
-    color: #aaa;
+    color: var(--text-secondary);
     margin-top: 100px;
 }
 
 .copyright {
     margin: 0 0 20px;
-    color: #aaa;
+    color: var(--text-secondary);
 }
 
 .footer-icons {
@@ -1189,10 +1266,6 @@ body.hero-active {
 .footer-icons img {
     width: 30px;
     height: 30px;
-
-    filter: brightness(0) invert(1);
-
-    transition: 0.2s ease;
 }
 
 .footer-icons img:hover {
@@ -1204,16 +1277,16 @@ body.hero-active {
     justify-content: space-between;
 
     padding-top: 15px;
-    border-top: 1px solid #444;
+    border-top: 1px solid var(--border);
 }
 
 .footer-actions a {
-    color: white;
+    color: var(--text);
     font-weight: bold;
 }
 
 .footer-actions a:hover {
-    color: yellow;
+    color: var(--accent);
 }
 
 /* Background css below */
@@ -1228,7 +1301,20 @@ body.hero-active {
 
     z-index: -1;
 
-    background: #080808;
+    background: var(--background);
 
     pointer-events: none;
+}
+
+.skill-icon,
+.contact-icon,
+.footer-icons img {
+    transition: filter 0.2s ease;
+    filter: brightness(0) invert(1);
+}
+
+html[data-theme="light"] .skill-icon,
+html[data-theme="light"] .contact-icon,
+html[data-theme="light"] .footer-icons img {
+    filter: brightness(0);
 }

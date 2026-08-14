@@ -19,6 +19,20 @@
             <li><a href="projects.html">Projects</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
+
+        <div class="theme-selector" aria-label="Theme selection">
+            <button type="button" class="theme-option" data-theme="light">
+                ◆
+            </button>
+
+            <button type="button" class="theme-option active" data-theme="system">
+                ◈
+            </button>
+
+            <button type="button" class="theme-option" data-theme="dark">
+                ◇
+            </button>
+        </div>
     </nav>
 
     <button id="music-toggle" class="music-btn" aria-label="Play menu music">▶</button>
@@ -192,7 +206,7 @@
                     </div>
 
                     <p class="project-description">
-                        An automated LeetCode solution synchronization tool that retrieves accepted SQL
+                        An automated LeetCode solution synchronization tool that retrieves accepted
                         submissions, organizes solutions, manages documentation, and tracks programming 
                         progress through GitHub Actions and Leetcode's GraphQL API. CodeAtlas was built 
                         to allow developers to document their coding journey, track their progress, and 
