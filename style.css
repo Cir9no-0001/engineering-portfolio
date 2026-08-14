@@ -1074,19 +1074,27 @@ body.hero-active {
     align-items: center;
     justify-content: center;
     font-size: 1.1rem;
+
+    position: relative;
 }
 
 .contact-box:hover {
-    background: var(--accent);
-    color: var(--background);
+    transform: translateY(-5px);
+    background-color: var(--surface-hover);
 }
 
 .contact-box a {
+    position: absolute;
+    inset: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: left;
     gap: 10px;
+
+    color: inherit;
+    text-decoration: none;
 }
 
 .contact-icon {
