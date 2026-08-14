@@ -202,9 +202,9 @@ The solution key is therefore based on the LeetCode problem slug together with t
 
 This allows the same problem to exist independently across supported languages while preserving separate code, runtime information, and metadata.
 
-Why: A solution written in Python and a solution written in C++ are different implementations with potentially different algorithms, complexity characteristics, runtime performance, and language-specific syntax. Treating them as one record would make it difficult to preserve that information independently.
+**Why:** A solution written in Python and a solution written in C++ are different implementations with potentially different algorithms, complexity characteristics, runtime performance, and language-specific syntax. Treating them as one record would make it difficult to preserve that information independently.
 
-Trade-off: The repository can contain multiple files for the same LeetCode problem, increasing the number of tracked solution files. This is intentional because the statistics represent stored solution implementations rather than only unique LeetCode problems.
+**Trade-off:** The repository can contain multiple files for the same LeetCode problem, increasing the number of tracked solution files. This is intentional because the statistics represent stored solution implementations rather than only unique LeetCode problems.
 
 ---
 

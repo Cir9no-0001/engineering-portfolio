@@ -53,6 +53,34 @@ function initializeBackground() {
 
     let dots = [];
 
+    function hexToRgb(hex) {
+        hex = hex.replace('#', '');
+
+        if (hex.length === 3) {
+            hex = hex
+                .split('')
+                .map(function (character) {
+                    return character + character;
+                })
+                .join('');
+        }
+
+        return {
+            r: parseInt(hex.substring(0, 2), 16),
+            g: parseInt(hex.substring(2, 4), 16),
+            b: parseInt(hex.substring(4, 6), 16)
+        };
+    }
+
+    function getThemeColors() {
+        const styles = getComputedStyle(document.documentElement);
+
+        return {
+            text: hexToRgb(styles.getPropertyValue('--text').trim()),
+            accent: styles.getPropertyValue('--accent').trim()
+        };
+    }
+
     let mouse = {
         x: null,
         y: null
@@ -90,6 +118,8 @@ function initializeBackground() {
             canvas.height
         );
 
+        const themeColors = getThemeColors();
+
         dots.forEach(function(dot) {
             // Calculate distance from mouse to dot
             const distance = Math.sqrt(
@@ -124,16 +154,20 @@ function initializeBackground() {
                 0.30 + dot.brightness * 0.70;
 
             ctx.fillStyle =
-                `rgba(255,255,255,${opacity})`;
+                `rgba(
+                    ${themeColors.text.r},
+                    ${themeColors.text.g},
+                    ${themeColors.text.b},
+                    ${opacity}
+                )`;
 
             // Add glow near cursor
             if (dot.brightness > 0.1) {
                 ctx.shadowBlur = 15;
-                ctx.shadowColor = "#7dbeff";
+                ctx.shadowColor = themeColors.accent;
 
             } else {
                 ctx.shadowBlur = 0;
-
             }
 
             ctx.fill();
@@ -141,7 +175,6 @@ function initializeBackground() {
         });
 
         requestAnimationFrame(drawDots);
-
     }
 
     // Track mouse position
@@ -165,3 +198,57 @@ function initializeBackground() {
 
 
 initializeBackground();
+
+/* User theme settings code below */
+
+const themeOptions = document.querySelectorAll('.theme-option');
+const savedTheme = localStorage.getItem('theme');
+
+function getSystemTheme() {
+    return window.matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark';
+}
+
+function applyTheme(theme) {
+    if (theme === 'system') {
+        const systemTheme = getSystemTheme();
+
+        document.documentElement.dataset.theme = systemTheme;
+    } else {
+        document.documentElement.dataset.theme = theme;
+    }
+
+    themeOptions.forEach(function (option) {
+        option.classList.toggle(
+            'active',
+            option.dataset.theme === theme
+        );
+    });
+}
+
+const initialTheme = savedTheme || 'system';
+
+applyTheme(initialTheme);
+
+themeOptions.forEach(function (option) {
+    option.addEventListener('click', function () {
+        const selectedTheme = option.dataset.theme;
+
+        localStorage.setItem('theme', selectedTheme);
+
+        applyTheme(selectedTheme);
+    });
+});
+
+const systemThemeQuery = window.matchMedia(
+    '(prefers-color-scheme: light)'
+);
+
+systemThemeQuery.addEventListener('change', function () {
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme === 'system' || !currentTheme) {
+        applyTheme('system');
+    }
+});
