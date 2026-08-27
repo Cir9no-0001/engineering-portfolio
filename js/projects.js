@@ -164,6 +164,22 @@ const projectInfo = {
             {
                 type: "image",
                 src: "images/CodeAtlas-3.png"
+            },
+            {
+                type: "image",
+                src: "images/CodeAtlas-4.png"
+            },
+            {
+                type: "image",
+                src: "images/CodeAtlas-5.png"
+            },
+            {
+                type: "image",
+                src: "images/CodeAtlas-6.png"
+            },
+            {
+                type: "image",
+                src: "images/CodeAtlas-7.png"
             }
         ],
         tags: ["Python", "MySQL", "GitHub Actions", "Git", "GitHub", "VS Code"],
