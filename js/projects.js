@@ -182,7 +182,7 @@ const projectInfo = {
                 src: "images/CodeAtlas-7.png"
             }
         ],
-        tags: ["Python", "MySQL", "GitHub Actions", "Git", "GitHub", "VS Code"],
+        tags: ["Python", "GitHub Actions", "Git", "GitHub", "VS Code", "HTML", "CSS", "JavaScript"],
         descriptionFile: "markdown/code-atlas.md",
         links: [
             { label: "GitHub Repo", url: "https://github.com/Cir9no-0001/CodeAtlas" }
