@@ -127,7 +127,7 @@ const projectInfo = {
         tags: ["Windows", "Linux", "VirtualBox", "AD DS", "DNS", "Group Policy", "Authentication Security", "Powershell", "Event Viewer", "Network Traffic Analysis", "Password Spraying"],
         descriptionFile: "markdown/ad-lab.md",
         links: [
-            { label: "GitHub Repo", url: "https://github.com/yourusername/ad-home-lab" }
+            { label: "GitHub Repo", url: "https://github.com/Cir9no-0001/ad-home-lab" }
         ]
     },
     "simon-says-v2": {
@@ -217,6 +217,31 @@ const projectInfo = {
         links: [
             { label: "GitHub Repo", url: "https://github.com/Cir9no-0001/engineering-portfolio" },
             { label: "Visit Site", url: "https://cir9no-0001.github.io/engineering-portfolio/" }
+        ]
+    },
+    "katharsis": {
+        media: [
+            {
+                type: "video",
+                src: "videos/Katharsis-0.mp4"
+            },
+            {
+                type: "image",
+                src: "images/Katharsis-1.png"
+            },
+            {
+                type: "image",
+                src: "images/Katharsis-2.png"
+            },
+            {
+                type: "image",
+                src: "images/Katharsis-3.png"
+            }
+        ],
+        tags: ["Python", "Chrome DevTools Protocol (CDP)", "Playwright", "Git", "Github", "VS Code", "Browser Automation", "DOM Analysis", "Frontend Reverse Engineering"],
+        descriptionFile: "markdown/katharsis.md",
+        links: [
+            { label: "GitHub Repo", url: "https://github.com/Cir9no-0001/Katharsis" }
         ]
     }
 };
