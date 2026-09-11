@@ -117,6 +117,10 @@ const skillInfo = {
 
     arduino: "Used to develop embedded systems that combine software with physical hardware. I have programmed microcontrollers to process user input, control LEDs and audio output, implement interactive logic, and interface with electronic components.",
 
+    tinkercad: "Used to digitally prototype and simulate electronic circuits and 3D printed components before physical construction. I have used Tinkercad Circuits to test Arduino programs, verify component connections, troubleshoot circuit behavior, and iterate on embedded system designs before assembling the final hardware.",
+
+    playwright: "Used for browser automation and testing of dynamically rendered web applications. I have used Playwright with Python to interact with React JS interfaces, inspect DOM structures, navigate dynamically loaded content, identify available actions, and automate multi-step browser workflows through an existing Chrome session.",
+
     cad: "Used for digital mechanical design and physical prototyping, including creating parts intended to be fabricated and integrated with electronic hardware. I have used CAD to translate physical requirements into designed components while considering dimensions, fit, and practical assembly."
 };
 
