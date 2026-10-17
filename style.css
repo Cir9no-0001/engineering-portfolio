@@ -1393,4 +1393,33 @@ html[data-theme="light"] .footer-icons img {
         width: 100%;
         box-sizing: border-box;
     }
+
+    #hero {
+        display: none;
+    }
+
+    body.hero-active {
+        overflow-y: auto;
+    }
+}
+
+/* Responsive navigation */
+.navbar {
+    width: fit-content;
+    max-width: calc(100% - 32px);
+    box-sizing: border-box;
+    gap: clamp(4px, 1vw, 12px);
+    align-items: center;
+}
+
+.navlinks {
+    gap: clamp(2px, 1vw, 12px);
+    min-width: 0;
+}
+
+.navlinks a {
+    padding: clamp(8px, 1vw, 10px)
+             clamp(8px, 1.3vw, 18px);
+    font-size: clamp(0.8rem, 1.1vw, 1rem);
+    white-space: nowrap;
 }
