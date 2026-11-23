@@ -64,45 +64,101 @@
                 <p>Builder</p>
             </section>
 
-            <section id="about">
-                <p>
-                    I’m driven by curiosity and the desire to understand how things work from first principles. 
-                    I approach every challenge as an opportunity to experiment, iterate, and discover better solutions. 
-                    I believe failure and success are vectors of the same magnitude but with different directions; both guide me toward 
-                    learning, improving, and creating something better.
-                </p>
-            </section>  
+            <section id="about-timeline">
+                <div id="about">
+                    <h2>About</h2>
+                    <p>
+                        I'm driven by curiosity and the desire to understand how things work from first principles.
+                        I believe failure and success are vectors of the same magnitude but different directions;
+                        both guide me toward learning, improving, and building something better.
+                    </p>
+                </div>
 
+                <div id="timeline">
+                    <h2>Timeline</h2>
+
+                    <ol class="timeline-track">
+                        
+                        <li class="timeline-item" data-type="project">
+                            <time datetime="2024-01">Jan 2024</time>
+                            <a class="timeline-title" href="projects.html#simon-says-v2">Simon Says V2</a>
+                            <p class="timeline-note">Arduino memory game</p>
+                        </li>
+
+                        <li class="timeline-item" data-type="work">
+                            <time datetime="2024-09">Sep 2024</time>
+                            <span class="timeline-title">Pharmacy Assistant</span>
+                            <p class="timeline-note">Co-op @Shoppers Drug Mart</p>
+                        </li>
+
+                        <li class="timeline-item" data-type="work">
+                            <time datetime="2025-01">Jan 2025</time>
+                            <span class="timeline-title">Math Tutor</span>
+                            <p class="timeline-note">High school tutoring</p>
+                        </li>
+
+                        <li class="timeline-item" data-type="project">
+                            <time datetime="2025-07">Jul 2025</time>
+                            <a class="timeline-title" href="projects.html#active-directory-home-lab">AD Home Lab</a>
+                            <p class="timeline-note">Simulated enterprise network</p>
+                        </li>
+
+                        <li class="timeline-item" data-type="project">
+                            <time datetime="2026-07">Jul 2026</time>
+                            <a class="timeline-title" href="projects.html#code-atlas">CodeAtlas</a>
+                            <p class="timeline-note">LeetCode sync automation</p>
+                        </li>
+
+                        <li class="timeline-item" data-type="project">
+                            <time datetime="2026-08">Aug 2026</time>
+                            <a class="timeline-title" href="projects.html#engineering-portfolio">This Portfolio</a>
+                            <p class="timeline-note">Built from scratch</p>
+                        </li>
+
+                        <li class="timeline-item" data-type="project">
+                            <time datetime="2026-08">Aug 2026</time>
+                            <a class="timeline-title" href="projects.html#katharsis">Katharsis</a>
+                            <p class="timeline-note">Browser automation</p>
+                        </li>
+
+                        <li class="timeline-item" data-type="education">
+                            <time datetime="2026-09">Sep 2026</time>
+                            <span class="timeline-title">University of Waterloo</span>
+                            <p class="timeline-note">Systems Design Eng. begins</p>
+                        </li>
+                    </ol>
+                </div>
+
+            </section>
             <section id="star-projects">
-
                 <div class="star-title">
-                    <div class="star-title-left">
-                        <h2>Starred Projects</h2>
-                        <p>
-                            Explore my best engineering, software, and technical projects.
-                        </p>
-                    </div>
-
-                    <div class="star-title-right">
-                        <p><a href="projects.html">View all projects</a></p>
-                    </div>
+                    <h2>Starred Projects</h2>
+                    <a href="projects.html">View all →</a>
                 </div>
 
                 <div class="project-container">
-                    <a class="project-card" data-project="active-directory-home-lab" href="projects.html#active-directory-home-lab">
-                        <img src="images/ad-lab-1.png" alt="Active Directory Home Lab">
-                        <h3>Active Directory Home Lab</h3>
+                    <a class="project-card" href="projects.html#active-directory-home-lab">
+                        <img src="images/ad-lab-1.png" alt="">
+                        <div class="project-card-text">
+                            <h3>Active Directory Home Lab</h3>
+                            <p>Simulated enterprise network on VirtualBox</p>
+                        </div>
                     </a>
 
-                    <a class="project-card" data-project="code-atlas" href="projects.html#code-atlas">
-
-                        <img src="images/CodeAtlas-1.png" alt="CodeAtlas">
-                        <h3>CodeAtlas</h3>
+                    <a class="project-card" href="projects.html#code-atlas">
+                        <img src="images/CodeAtlas-1.png" alt="">
+                        <div class="project-card-text">
+                            <h3>CodeAtlas</h3>
+                            <p>Automated LeetCode solution sync</p>
+                        </div>
                     </a>
 
-                    <a class="project-card" data-project="simon-says-v2" href="projects.html#simon-says-v2">
-                        <img src="images/simon-says-v2-2.png" alt="Simon Says V2">
-                        <h3>Simon Says V2</h3>
+                    <a class="project-card" href="projects.html#simon-says-v2">
+                        <img src="images/simon-says-v2-2.png" alt="">
+                        <div class="project-card-text">
+                            <h3>Simon Says V2</h3>
+                            <p>Arduino memory game, 3D-printed</p>
+                        </div>
                     </a>
                 </div>
             </section>
@@ -110,113 +166,123 @@
             <section id="skills">
                 <h2>Technical Skills</h2>
 
-                <h3 class="skill-category-title">Languages</h3>
-                <div class="skills-container">
-                    <button type="button" class="skill-card" data-skill="python">
-                        <img src="icons/python.svg" alt="Python logo" class="skill-icon">
-                        <span class="skill-name">Python</span>
-                        <span class="skill-time">4 years</span>
-                    </button>
+                <div class="skill-row">
+                    <h3 class="skill-category-title">Languages</h3>
+                    <div class="skills-container">
+                        <button type="button" class="skill-card" data-skill="python">
+                            <img src="icons/python.svg" alt="Python logo" class="skill-icon">
+                            <span class="skill-name">Python</span>
+                            <span class="skill-time">4 years</span>
+                        </button>
 
-                    <button type="button" class="skill-card" data-skill="java">
-                        <img src="icons/java.svg" alt="Java logo" class="skill-icon">
-                        <span class="skill-name">Java</span>
-                        <span class="skill-time">3 years</span>
-                    </button>
+                        <button type="button" class="skill-card" data-skill="java">
+                            <img src="icons/java.svg" alt="Java logo" class="skill-icon">
+                            <span class="skill-name">Java</span>
+                            <span class="skill-time">3 years</span>
+                        </button>
 
-                    <button type="button" class="skill-card" data-skill="cpp">
-                        <img src="icons/cpp.svg" alt="C++ logo" class="skill-icon">
-                        <span class="skill-name">C++</span>
-                        <span class="skill-time">2 years</span>
-                    </button>
-                    
-                    <button type="button" class="skill-card" data-skill="css">
-                        <img src="icons/css.svg" alt="CSS logo" class="skill-icon">
-                        <span class="skill-name">CSS</span>
-                        <span class="skill-time">1 year</span>
-                    </button>
+                        <button type="button" class="skill-card" data-skill="cpp">
+                            <img src="icons/cpp.svg" alt="C++ logo" class="skill-icon">
+                            <span class="skill-name">C++</span>
+                            <span class="skill-time">2 years</span>
+                        </button>
+                        
+                        <button type="button" class="skill-card" data-skill="css">
+                            <img src="icons/css.svg" alt="CSS logo" class="skill-icon">
+                            <span class="skill-name">CSS</span>
+                            <span class="skill-time">1 year</span>
+                        </button>
 
-                    <button type="button" class="skill-card" data-skill="html">
-                        <img src="icons/html.svg" alt="HTML logo" class="skill-icon">
-                        <span class="skill-name">HTML</span>
-                        <span class="skill-time">1 year</span>
-                    </button>
+                        <button type="button" class="skill-card" data-skill="html">
+                            <img src="icons/html.svg" alt="HTML logo" class="skill-icon">
+                            <span class="skill-name">HTML</span>
+                            <span class="skill-time">1 year</span>
+                        </button>
 
-                    <button type="button" class="skill-card" data-skill="javascript">
-                        <img src="icons/javascript.svg" alt="JavaScript logo" class="skill-icon">
-                        <span class="skill-name">JavaScript</span>
-                        <span class="skill-time">1 year</span>
-                    </button>
-                    
-                    <button type="button" class="skill-card" data-skill="mysql">
-                        <img src="icons/mysql.svg" alt="MySQL logo" class="skill-icon">
-                        <span class="skill-name">MySQL</span>
-                        <span class="skill-time">1 year</span>
-                    </button>
+                        <button type="button" class="skill-card" data-skill="javascript">
+                            <img src="icons/javascript.svg" alt="JavaScript logo" class="skill-icon">
+                            <span class="skill-name">JavaScript</span>
+                            <span class="skill-time">1 year</span>
+                        </button>
+                        
+                        <button type="button" class="skill-card" data-skill="mysql">
+                            <img src="icons/mysql.svg" alt="MySQL logo" class="skill-icon">
+                            <span class="skill-name">MySQL</span>
+                            <span class="skill-time">1 year</span>
+                        </button>
+                    </div>
                 </div>
 
-                <h3 class="skill-category-title">Frameworks & Tools</h3>
-                <div class="skills-container">
-                    <button type="button" class="skill-card" data-skill="git">
-                        <img src="icons/git.svg" alt="Git logo" class="skill-icon">
-                        <span class="skill-name">Git</span>
-                        <span class="skill-time">2 years</span>
-                    </button>
-
-                    <button type="button" class="skill-card" data-skill="playwright">
-                        <img src="icons/playwright.svg" alt="Playwright logo" class="skill-icon">
-                        <span class="skill-name">Playwright</span>
-                        <span class="skill-time">1 years</span>
-                    </button>
-
-                    <button type="button" class="skill-card" data-skill="github">
-                        <img src="icons/github.svg" alt="GitHub logo" class="skill-icon">
-                        <span class="skill-name">GitHub</span>
-                        <span class="skill-time">2 years</span>
-                    </button>
-                    
-                    <button type="button" class="skill-card" data-skill="vscode">
-                        <img src="icons/vscode.svg" alt="VS Code logo" class="skill-icon">
-                        <span class="skill-name">VS Code</span>
-                        <span class="skill-time">4 years</span>
-                    </button>
-                </div>
-
-                <h3 class="skill-category-title">Systems & Infrastructure</h3>
-                <div class="skills-container">
-                    <button type="button" class="skill-card" data-skill="windows">
-                        <img src="icons/windows.svg" alt="Windows logo" class="skill-icon">
-                        <span class="skill-name">Windows</span>
-                        <span class="skill-time">8 years</span>
-                    </button>
-
-                    <button type="button" class="skill-card" data-skill="linux">
-                        <img src="icons/linux.svg" alt="Linux logo" class="skill-icon">
-                        <span class="skill-name">Linux</span>
-                        <span class="skill-time">2 years</span>
-                    </button>
-                    
-                    <button type="button" class="skill-card" data-skill="virtualbox">
-                        <img src="icons/virtualbox.svg" alt="VirtualBox logo" class="skill-icon">
-                        <span class="skill-name">VirtualBox</span>
-                        <span class="skill-time">2 years</span>
-                    </button>
-                </div>
                 
-                <h3 class="skill-category-title">Hardware & Design</h3>
-                <div class="skills-container">
-                    <button type="button" class="skill-card" data-skill="arduino">
-                        <img src="icons/arduino.svg" alt="Arduino logo" class="skill-icon">
-                        <span class="skill-name">Arduino</span>
-                        <span class="skill-time">3 years</span>
-                    </button>
+                <div class="skill-row">
+                    <h3 class="skill-category-title">Frameworks & Tools</h3>
+                    <div class="skills-container">
+                        <button type="button" class="skill-card" data-skill="git">
+                            <img src="icons/git.svg" alt="Git logo" class="skill-icon">
+                            <span class="skill-name">Git</span>
+                            <span class="skill-time">2 years</span>
+                        </button>
 
-                    <button type="button" class="skill-card" data-skill="tinkercad">
-                        <img src="icons/tinkercad.svg" alt="Tinkercad logo" class="skill-icon">
-                        <span class="skill-name">Tinkercad</span>
-                        <span class="skill-time">3 years</span>
-                    </button>
+                        <button type="button" class="skill-card" data-skill="playwright">
+                            <img src="icons/playwright.svg" alt="Playwright logo" class="skill-icon">
+                            <span class="skill-name">Playwright</span>
+                            <span class="skill-time">1 years</span>
+                        </button>
+
+                        <button type="button" class="skill-card" data-skill="github">
+                            <img src="icons/github.svg" alt="GitHub logo" class="skill-icon">
+                            <span class="skill-name">GitHub</span>
+                            <span class="skill-time">2 years</span>
+                        </button>
+                        
+                        <button type="button" class="skill-card" data-skill="vscode">
+                            <img src="icons/vscode.svg" alt="VS Code logo" class="skill-icon">
+                            <span class="skill-name">VS Code</span>
+                            <span class="skill-time">4 years</span>
+                        </button>
+                    </div>
                 </div>
+
+                <div class="skill-row">
+                    <h3 class="skill-category-title">Systems & Infrastructure</h3>
+                    <div class="skills-container">
+                        <button type="button" class="skill-card" data-skill="windows">
+                            <img src="icons/windows.svg" alt="Windows logo" class="skill-icon">
+                            <span class="skill-name">Windows</span>
+                            <span class="skill-time">8 years</span>
+                        </button>
+
+                        <button type="button" class="skill-card" data-skill="linux">
+                            <img src="icons/linux.svg" alt="Linux logo" class="skill-icon">
+                            <span class="skill-name">Linux</span>
+                            <span class="skill-time">2 years</span>
+                        </button>
+                        
+                        <button type="button" class="skill-card" data-skill="virtualbox">
+                            <img src="icons/virtualbox.svg" alt="VirtualBox logo" class="skill-icon">
+                            <span class="skill-name">VirtualBox</span>
+                            <span class="skill-time">2 years</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="skill-row">
+                    <h3 class="skill-category-title">Hardware & Design</h3>
+                    <div class="skills-container">
+                        <button type="button" class="skill-card" data-skill="arduino">
+                            <img src="icons/arduino.svg" alt="Arduino logo" class="skill-icon">
+                            <span class="skill-name">Arduino</span>
+                            <span class="skill-time">3 years</span>
+                        </button>
+
+                        <button type="button" class="skill-card" data-skill="tinkercad">
+                            <img src="icons/tinkercad.svg" alt="Tinkercad logo" class="skill-icon">
+                            <span class="skill-name">Tinkercad</span>
+                            <span class="skill-time">3 years</span>
+                        </button>
+                    </div>
+                </div>
+
             </section>
 
             <footer class="footer">
