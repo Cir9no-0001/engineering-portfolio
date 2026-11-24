@@ -21,21 +21,37 @@
         </ul>
 
         <div class="theme-selector" aria-label="Theme selection">
-            <button type="button" class="theme-option" data-theme="light">
-                ◆
+            <button type="button" class="theme-option" data-theme="light" aria-label="Light theme" title="Light">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                </svg>
             </button>
 
-            <button type="button" class="theme-option active" data-theme="system">
-                ◈
+            <button type="button" class="theme-option active" data-theme="system" aria-label="System theme" title="System">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                    <path d="M8 21h8M12 17v4"/>
+                </svg>
             </button>
 
-            <button type="button" class="theme-option" data-theme="dark">
-                ◇
+            <button type="button" class="theme-option" data-theme="dark" aria-label="Dark theme" title="Dark">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+                </svg>
             </button>
         </div>
     </nav>
 
-    <button id="music-toggle" class="music-btn" aria-label="Play menu music">▶</button>
+    <button id="music-toggle" class="music-btn" aria-label="Play menu music">
+        <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true">
+            <polygon points="6 3 20 12 6 21 6 3"/>
+        </svg>
+        <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="6" y="4" width="4" height="16" rx="1"/>
+            <rect x="14" y="4" width="4" height="16" rx="1"/>
+        </svg>
+    </button>
     <audio id="menu-music" src="audio/menu_music.mp3" loop></audio>
 
     <main>
@@ -49,7 +65,12 @@
             </div>
 
             <div class="controls-bar">
-                <button type="button" id="filter-toggle" class="filter-btn">⚙ Advanced Filter</button>
+                <button type="button" id="filter-toggle" class="filter-btn">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3M14 2v4M8 10v4M16 18v4"/>
+                    </svg>
+                    Advanced Filter
+                </button>
                 <input type="text" id="project-search" class="search-input" placeholder="Search projects...">
             </div>
 
@@ -368,7 +389,11 @@
     </div>
 
     <div id="image-lightbox" class="lightbox hidden">
-        <button class="lightbox-close">&times;</button>
+        <button type="button" class="lightbox-close" aria-label="Close image">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
+        </button>
 
         <img id="lightbox-image" src="" alt="Expanded project image">
 

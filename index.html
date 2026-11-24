@@ -29,21 +29,37 @@
             </ul>
 
             <div class="theme-selector" aria-label="Theme selection">
-                <button type="button" class="theme-option" data-theme="light">
-                    ◆
+                <button type="button" class="theme-option" data-theme="light" aria-label="Light theme" title="Light">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"/>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                    </svg>
                 </button>
 
-                <button type="button" class="theme-option active" data-theme="system">
-                    ◈
+                <button type="button" class="theme-option active" data-theme="system" aria-label="System theme" title="System">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                        <path d="M8 21h8M12 17v4"/>
+                    </svg>
                 </button>
 
-                <button type="button" class="theme-option" data-theme="dark">
-                    ◇
+                <button type="button" class="theme-option" data-theme="dark" aria-label="Dark theme" title="Dark">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+                    </svg>
                 </button>
             </div>
         </nav>
 
-        <button id="music-toggle" class="music-btn" aria-label="Play menu music">▶</button>
+        <button id="music-toggle" class="music-btn" aria-label="Play menu music">
+            <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true">
+                <polygon points="6 3 20 12 6 21 6 3"/>
+            </svg>
+            <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="6" y="4" width="4" height="16" rx="1"/>
+                <rect x="14" y="4" width="4" height="16" rx="1"/>
+            </svg>
+        </button>
         <audio id="menu-music" src="audio/menu_music.mp3" loop></audio>
 
         <main>
@@ -57,13 +73,6 @@
                 </div>
             </section>
 
-            <section id="brief">
-                <p>Curious</p>
-                <p>Systems Engineer</p>
-                <p>Problem Solver</p>
-                <p>Builder</p>
-            </section>
-
             <section id="about-timeline">
                 <div id="about">
                     <h2>About</h2>
@@ -72,6 +81,31 @@
                         I believe failure and success are vectors of the same magnitude but different directions;
                         both guide me toward learning, improving, and building something better.
                     </p>
+
+                    <dl class="spec-sheet">
+                        <div class="spec-cell">
+                            <dt>Focus</dt>
+                            <dd>IT · Automation · Infra</dd>
+                        </div>
+
+                        <div class="spec-cell">
+                            <dt>Status</dt>
+                            <dd>Seeking S27 co-op</dd>
+                        </div>
+
+                        <div class="spec-cell">
+                            <dt>Builds</dt>
+                            <dd>Hardware + Software</dd>
+                        </div>
+
+                        <div class="spec-cell">
+                            <dt>Degree done</dt>
+                            <dd>
+                                <span id="degree-percent">0%</span>
+                                <span class="degree-bar"><span class="degree-fill"></span></span>
+                            </dd>
+                        </div>
+                    </dl>
                 </div>
 
                 <div id="timeline">
@@ -127,6 +161,25 @@
                             <p class="timeline-note">Systems Design Eng. begins</p>
                         </li>
                     </ol>
+
+                    <div class="terminal" aria-label="What I'm currently working on">
+                        <div class="terminal-bar">stanley@portfolio: ~</div>
+
+                        <div class="terminal-body">
+                            <p><span class="prompt-line">┌──(</span><span class="prompt-user">stanley㉿portfolio</span><span class="prompt-line">)-[</span><span class="prompt-path">~</span><span class="prompt-line">]</span></p>
+                            <p><span class="prompt-line">└─</span><span class="prompt-symbol">$</span> cat now.txt</p>
+
+                            <ul class="terminal-list">
+                                <li>Building <strong>Katharsis</strong>: browser automation with Playwright</li>
+                                <li>Building the <strong>CodeAtlas</strong> backend with FastAPI</li>
+                                <li>Studying for the <strong>CCNA</strong> with Jeremy's IT Lab</li>
+                            </ul>
+
+                            <p><span class="prompt-line">┌──(</span><span class="prompt-user">stanley㉿portfolio</span><span class="prompt-line">)-[</span><span class="prompt-path">~</span><span class="prompt-line">]</span></p>
+                            <p><span class="prompt-line">└─</span><span class="prompt-symbol">$</span></p>
+                        </div>
+                    </div>
+
                 </div>
 
             </section>

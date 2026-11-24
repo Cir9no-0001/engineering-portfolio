@@ -20,16 +20,24 @@
         </ul>
 
         <div class="theme-selector" aria-label="Theme selection">
-            <button type="button" class="theme-option" data-theme="light">
-                ◆
+            <button type="button" class="theme-option" data-theme="light" aria-label="Light theme" title="Light">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                </svg>
             </button>
 
-            <button type="button" class="theme-option active" data-theme="system">
-                ◈
+            <button type="button" class="theme-option active" data-theme="system" aria-label="System theme" title="System">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                    <path d="M8 21h8M12 17v4"/>
+                </svg>
             </button>
 
-            <button type="button" class="theme-option" data-theme="dark">
-                ◇
+            <button type="button" class="theme-option" data-theme="dark" aria-label="Dark theme" title="Dark">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+                </svg>
             </button>
         </div>
     </nav>

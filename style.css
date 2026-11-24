@@ -68,6 +68,60 @@ main {
 }
 
 
+.icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.theme-option,
+.music-btn,
+.modal-close,
+.lightbox-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-btn .icon {
+    width: 20px;
+    height: 20px;
+}
+
+.music-btn .icon-pause {
+    display: none;
+}
+
+.music-btn.playing .icon-play {
+    display: none;
+}
+
+.music-btn.playing .icon-pause {
+    display: block;
+}
+
+.filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-close .icon {
+    width: 22px;
+    height: 22px;
+}
+
+.lightbox-close .icon {
+    width: 32px;
+    height: 32px;
+}
+
 /* Index.html CSS Below */
 
 body.hero-active {
@@ -284,7 +338,9 @@ body.hero-active {
     justify-content:space-between;
     align-items:center;
     margin-top:20px;
-    margin-bottom:0;
+    margin-bottom:20px;
+    padding-bottom:15px;
+    border-bottom:1px solid var(--text);
     width: 100%;
 }
 
@@ -309,205 +365,421 @@ body.hero-active {
     margin: 5px;
 }
 
-#brief {
-    display: flex;
-    justify-content: center;
+
+#about-timeline {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
     gap: 20px;
-    position: relative;
-    padding: 15px 0;
-    margin: 5px 0 20px;
+    margin-bottom: 20px;
 }
 
-
-#brief::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--text);
-}
-
-
-#brief::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: var(--text);
-}
-
-
-#brief p {
+#about,
+#timeline {
     background: var(--surface);
-    padding: 10px 20px;
-    border-radius: 30px;
-    margin-top: 0;
-    margin-bottom: 0;
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    min-width: 0;
 }
 
 #about {
-    background: var(--surface);
-    padding:10px 40px;
-    border-radius:20px;
-    font-size:1.2rem;
-    line-height:1.6;
-    margin-bottom:20px;
+    border-left: 3px solid var(--accent);
+    display: flex;
+    flex-direction: column;
+}
 
+#timeline {
+    display: grid;
+    grid-template-rows: auto 2fr 3fr;
+    height: 390px;
+    box-sizing: border-box;
+}
+
+#about h2,
+#timeline h2 {
+    margin: 0 0 12px;
+    font-size: 1.2rem;
+}
+
+#about p {
+    margin: 0 0 16px;
+    line-height: 1.6;
+}
+
+/* Spec sheet (inside About) */
+.spec-sheet {
+    margin: auto 0 0;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+
+    background: var(--border);
+    border: 1px solid var(--border);
+}
+
+.spec-cell {
+    min-width: 0;
+    padding: 8px 10px;
+    background: var(--surface-secondary);
+}
+
+.spec-cell dt {
+    margin-bottom: 4px;
+
+    font-family: ui-monospace, "Cascadia Mono", Consolas, "DejaVu Sans Mono", monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.spec-cell dd {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+#degree-percent {
+    font-variant-numeric: tabular-nums;
+}
+
+.degree-bar {
+    display: block;
+    height: 3px;
+    margin-top: 6px;
+    background: var(--border);
+}
+
+.degree-fill {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: var(--accent);
+}
+
+.timeline-track {
+    list-style: none;
+    margin: 0;
+    padding: 4px 24px 0;
+    align-self: center;
+
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 24px, #000 calc(100% - 24px), transparent);
+}
+
+.timeline-track::-webkit-scrollbar {
+    display: none;
+}
+
+.timeline-item {
+    flex: 0 0 160px;
+    position: relative;
+    padding-right: 16px;
+}
+
+.timeline-item[data-type="project"]   { --dot-color: #3fb68b; }
+.timeline-item[data-type="education"] { --dot-color: #8b7ff0; }
+.timeline-item[data-type="work"]      { --dot-color: #e07a5f; }
+
+/* line segment */
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    top: 29px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--border);
+}
+
+/* dot */
+.timeline-item::after {
+    content: "";
+    position: absolute;
+    top: 24px;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--dot-color);
+}
+
+.timeline-item time {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.timeline-title {
+    display: block;
+    margin-top: 28px;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+a.timeline-title:hover {
+    color: var(--accent);
+}
+
+.timeline-note {
+    margin: 4px 0 0;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Kali-style terminal */
+.terminal {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    margin-top: 12px;
+
+    background: #11131a;
+    border: 1px solid #2c2f3a;
+    border-radius: 6px;
+    overflow: hidden;
+
+    font-family: ui-monospace, "Cascadia Mono", Consolas, "DejaVu Sans Mono", monospace;
+    font-size: 0.85rem;
+    color: #e6e6e6;
+}
+
+.terminal-bar {
+    padding: 5px 12px;
+    background: #23262f;
+    border-bottom: 1px solid #2c2f3a;
+
+    color: #b8bcc8;
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+.terminal-body {
+    flex: 1;
+    min-height: 0;
+    padding: 10px 14px;
+
+    overflow-y: auto;
+    scrollbar-width: none;
+
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 10px, #000 calc(100% - 10px), transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 10px, #000 calc(100% - 10px), transparent);
+}
+
+.terminal-body::-webkit-scrollbar {
+    display: none;
+}
+
+.terminal-body p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Kali's default zsh prompt colours */
+.prompt-line   { color: #2fc15b; }
+.prompt-user   { color: #3b8eea; font-weight: bold; }
+.prompt-path   { color: #ffffff; font-weight: bold; }
+.prompt-symbol { color: #3b8eea; font-weight: bold; }
+
+.terminal-list {
+    list-style: none;
+    margin: 2px 0 8px;
+    padding: 0;
+    line-height: 1.5;
+}
+
+.terminal-list li {
+    padding-left: 4ch;
+    text-indent: -4ch;
+}
+
+.terminal-list li::before {
+    content: "[*] ";
+    color: #3b8eea;
+    font-weight: bold;
+}
+
+.terminal-list strong {
+    color: #ffffff;
 }
 
 #star-projects {
-    background-color: var(--surface);
-    border-radius: 20px;
-    padding: 30px;
-    margin-top: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
     margin-bottom: 20px;
 }
 
 .star-title {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 20px;
+    align-items: baseline;
+    margin-bottom: 16px;
 }
 
-.star-title-left {
-    text-align: left;
+.star-title h2 {
+    margin: 0;
+    font-size: 1.2rem;
 }
 
-.star-title-right {
-    text-align: right;
+.star-title a {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
 }
 
-.star-title-right:hover {
-    color: var(--accent-hover);
+.star-title a:hover {
+    color: var(--accent);
 }
 
 .project-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    gap: 16px;
 }
 
 .project-card {
-    background-color: var(--surface-secondary);
-    border-radius: 15px;
-    height: 250px;
-
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: stretch;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
 
-    padding: 0;
-    overflow: hidden;
-
+    background: var(--surface-secondary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
     color: var(--text);
-    text-decoration: none;
 
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    background-color: var(--surface-hover);
+    border-color: var(--accent);
+    background: var(--surface-hover);
 }
 
 .project-card img {
-    width: 100%;
-    height: 100%;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
     object-fit: cover;
-    display: block;
+    border-radius: 4px;
 }
 
 .project-card h3 {
-    margin: 0;
-    padding: 15px 20px;
+    margin: 0 0 4px;
+    font-size: 0.95rem;
+}
 
+.project-card p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
 }
 
 #skills {
-    background-color: var(--surface);
-    border-radius: 20px;
-    padding: 20px;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-#skills h2,
-#skills h3{
-    text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
 }
 
 #skills h2 {
+    text-align: center;
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
 }
 
-#skills h3 {
-    font-size: 1.5rem;
-    margin-top: 20px;
-    margin-bottom: 20px;
+.skill-row {
+    display: flex;
+    margin-bottom: 12px;
+
+    background: var(--surface-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.skill-row:last-child {
+    margin-bottom: 0;
+}
+
+.skill-category-title {
+    flex: 0 0 180px;
+    display: flex;
+    align-items: center;
+
+    margin: 0;
+    padding: 12px 16px;
+    font-size: 1rem;
+
+    background: color-mix(in srgb, var(--accent) 15%, var(--surface));
+    border-right: 1px solid var(--border);
 }
 
 .skills-container {
+    flex: 1;
+    min-width: 0;
+
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding-bottom: 30px;
-    margin-bottom: 30px;
-    border-bottom: 1px solid var(--border);
+    gap: 10px;
+    padding: 10px 16px;
+
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 16px, #000 calc(100% - 16px), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 16px, #000 calc(100% - 16px), transparent);
+}
+
+.skills-container::-webkit-scrollbar {
+    display: none;
 }
 
 .skill-card {
-    background-color: var(--surface-secondary);
-    border: none;
-    border-radius: 15px;
-    height: 100px;
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-shrink: 0;
+
+    display: grid;
+    grid-template-columns: 22px auto;
+    column-gap: 8px;
     align-items: center;
-    cursor: pointer;
+    text-align: left;
+
+    padding: 6px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+
     color: var(--text);
-    transition: 0.2s ease;
     font-family: inherit;
-    font-size: inherit;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.skill-card:hover {
+    border-color: var(--accent);
 }
 
 .skill-icon {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 10px;
+    grid-row: span 2;
+    width: 22px;
+    height: 22px;
     object-fit: contain;
 }
 
 .skill-name {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     font-weight: bold;
+    line-height: 1.2;
 }
 
 .skill-time {
+    font-size: 0.75rem;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    line-height: 1.2;
 }
-
-.skill-card:hover {
-    transform: translateY(-5px);
-    background-color: var(--surface-hover);
-}
-
-.skills-container:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-}
-
 .skill-description{
     background-color: var(--surface-tertiary);
     border-radius: 8px;
@@ -1330,6 +1602,46 @@ html[data-theme="light"] .footer-icons img {
 
 /* Mobile project cards */
 @media (max-width: 900px) {
+    #intro {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .intro-left,
+    .intro-right {
+        width: 100%;
+        text-align: left;
+    }
+
+    .intro-left {
+        font-size: 1.4rem;
+    }
+
+    #about-timeline,
+    .project-container {
+        grid-template-columns: 1fr;
+    }
+
+    #timeline {
+        height: auto;
+        grid-template-rows: auto;
+    }
+
+    .terminal-body {
+        max-height: 180px;
+    }
+
+    .skill-row {
+        flex-direction: column;
+    }
+
+    .skill-category-title {
+        flex-basis: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
     .project {
         display: grid;
         grid-template-columns: minmax(0, 1fr);

@@ -316,8 +316,12 @@ seeMoreButtons.forEach(function (button) {
 
         // Build project see more modal HTML using generated gallery, tags, description, and links
         projectModalContent.innerHTML = `
-            <button type="button" class="modal-close">&times;</button>
-
+            <button type="button" class="modal-close" aria-label="Close project details">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18 6 6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            
             <div class="detail-header">
                 <h1>${title}</h1>
                 <h1 class="project-date">${date}</h1>

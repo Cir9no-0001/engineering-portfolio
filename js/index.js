@@ -154,3 +154,57 @@ skillModal.addEventListener('click', function (event) {
         showNavbar();
     }
 });
+
+/* Horizontal scroll strips (timeline + skills) below */
+
+// Start the timeline at its newest (right-most) entry
+const timelineTrack = document.querySelector('.timeline-track');
+timelineTrack.scrollLeft = timelineTrack.scrollWidth;
+
+// Turn vertical mouse-wheel scrolling into sideways scrolling on the strips
+const scrollStrips = document.querySelectorAll('.timeline-track, .skills-container');
+
+scrollStrips.forEach(function (strip) {
+    strip.addEventListener('wheel', function (event) {
+        // Trackpad sideways swipe: let the browser handle it normally
+        if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+
+        const maxScroll = strip.scrollWidth - strip.clientWidth;
+
+        // Strip fits without scrolling: do nothing
+        if (maxScroll <= 0) return;
+
+        const atStart = strip.scrollLeft <= 0 && event.deltaY < 0;
+        const atEnd = strip.scrollLeft >= maxScroll - 1 && event.deltaY > 0;
+
+        // At an edge: release the wheel so the page keeps scrolling
+        if (atStart || atEnd) return;
+
+        event.preventDefault();
+        strip.scrollLeft += event.deltaY;
+    }, { passive: false });
+});
+
+
+/* Degree progress (spec sheet) below */
+
+// Change these if your start or graduation date differs
+const degreeStart = new Date('2026-09-01');
+const degreeEnd = new Date('2031-04-30');
+
+function updateDegreeProgress() {
+    const now = new Date();
+
+    // Subtracting two Dates gives milliseconds
+    const total = degreeEnd - degreeStart;
+    const elapsed = now - degreeStart;
+
+    // Clamp between 0 and 100 so it never shows -3% or 112%
+    const percent = Math.min(Math.max(elapsed / total * 100, 0), 100);
+
+    document.getElementById('degree-percent').textContent = percent.toFixed(8) + '%';
+    document.querySelector('.degree-fill').style.width = percent + '%';
+}
+
+updateDegreeProgress();
+setInterval(updateDegreeProgress, 100);

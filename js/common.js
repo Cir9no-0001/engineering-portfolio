@@ -11,10 +11,12 @@ if (musicButton && music) {
             music.play().catch(function (error) {
                 console.log('Play failed:', error);
             });
-            musicButton.textContent = '⏸';
+            musicButton.classList.add('playing');
+            musicButton.setAttribute('aria-label', 'Pause menu music');
         } else {
             music.pause();
-            musicButton.textContent = '▶';
+            musicButton.classList.remove('playing');
+            musicButton.setAttribute('aria-label', 'Play menu music');
         }
     });
 }
