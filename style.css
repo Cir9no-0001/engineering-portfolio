@@ -486,6 +486,7 @@ body.hero-active {
 .timeline-item[data-type="project"]   { --dot-color: #3fb68b; }
 .timeline-item[data-type="education"] { --dot-color: #8b7ff0; }
 .timeline-item[data-type="work"]      { --dot-color: #e07a5f; }
+.timeline-item[data-type="cert"]      { --dot-color: #4aa3df; }
 
 /* line segment */
 .timeline-item::before {
