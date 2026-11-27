@@ -1212,6 +1212,7 @@ a.timeline-title:hover {
 .status-tag[data-status="completed"] { background: green; }
 .status-tag[data-status="in-progress"] { background: orange; }
 .status-tag[data-status="down"] { background: red; }
+.status-tag[data-status="archived"] { background: #555; }
 
 .project-description {
     margin-bottom: 20px;
@@ -1603,6 +1604,14 @@ html[data-theme="light"] .footer-icons img {
 
 /* Mobile project cards */
 @media (max-width: 900px) {
+    main {
+        width: 92%;
+    }
+
+    .project-title-group h3 {
+        font-size: 1.1rem;
+    }
+
     #intro {
         flex-direction: column;
         align-items: flex-start;
@@ -1736,4 +1745,35 @@ html[data-theme="light"] .footer-icons img {
              clamp(8px, 1.3vw, 18px);
     font-size: clamp(0.8rem, 1.1vw, 1rem);
     white-space: nowrap;
+}
+
+
+
+
+/*
+MOBILE CONTROLS BAR
+Icon-only filter button, search box fills the rest of the row.
+*/
+@media (max-width: 900px) {
+    .controls-bar {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .search-input {
+        flex: 1 1 auto;
+        min-width: 0;
+        width: auto;
+    }
+
+    .filter-btn {
+        flex: 0 0 auto;
+        font-size: 0;
+        gap: 0;
+        padding: 10px;
+    }
+
+    .filter-btn > :not(svg) {
+        display: none;
+    }
 }
